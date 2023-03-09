@@ -120,7 +120,8 @@
     width: 15px; /* Set a specific slider handle width */
     height: 15px; /* Slider handle height */
     border-radius: 100%;
-    background: white; /* Green background */
+    background: white;
+    border: 1px solid #c7c7c7; 
     cursor: pointer; /* Cursor on hover */
   }
   input[type="range"]::-webkit-slider-runnable-track {
@@ -130,13 +131,7 @@
     -webkit-appearance: none;
   }
   input[type="range"] {
-    background-image: -webkit-gradient(
-      linear,
-      50% 0%,
-      50% 100%,
-      color-stop(0%, #2563eb),
-      color-stop(100%, #2563eb)
-    );
+   
     background-repeat: no-repeat;
     -webkit-appearance: none;
   }
