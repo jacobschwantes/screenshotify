@@ -117,17 +117,17 @@ const PasswordPage: NextComponentType<
       }}
       className="flex flex-col space-y-6"
     >
-      <h1 className="text-gray-100 text-3xl font-bold">Enter password</h1>
+      <h1 className="text-zinc-100 text-3xl font-bold">Enter password</h1>
       <button
         type="button"
         onClick={() => setEmailValidated(false)}
         className="p-4 font-bold rounded-lg focus:outline-none  active:scale-[.98] hover:brightness-150 active:bg-zinc-900  border-zinc-800 border flex items-center space-x-3 text-white "
       >
-        <UserIcon className="h-7 border-2 rounded-full p-0.5 text-gray-400" />
+        <UserIcon className="h-7 border-2 rounded-full p-0.5 text-zinc-400" />
         <p className="truncate">{email}</p>
       </button>
       <div className="flex flex-col space-y-1 pb-5">
-        <label htmlFor="email" className="text-gray-100 font-medium text-sm">
+        <label htmlFor="email" className="text-zinc-100 font-medium text-sm">
           Password
         </label>
         <div className="w-full relative">
@@ -143,7 +143,7 @@ const PasswordPage: NextComponentType<
             spellCheck={false}
             type={showPassword ? "text" : "password"}
             className={
-              "form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-gray-400 border-zinc-800 border " +
+              "form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-zinc-400 border-zinc-800 border " +
               (error ? "border-red-500" : "focus:border-blue-500")
             }
           ></input>
@@ -153,9 +153,9 @@ const PasswordPage: NextComponentType<
             className="cursor-pointer absolute inset-y-0 right-0 pr-4 flex items-center"
           >
             {showPassword ? (
-              <EyeIcon className="h-5 text-gray-400" />
+              <EyeIcon className="h-5 text-zinc-400" />
             ) : (
-              <EyeOffIcon className="h-5 text-gray-400" />
+              <EyeOffIcon className="h-5 text-zinc-400" />
             )}
           </button>
         </div>
@@ -171,7 +171,7 @@ const PasswordPage: NextComponentType<
       </button>
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-gray-900 flex items-center justify-center"
+        className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-zinc-900 flex items-center justify-center"
       >
         {loading ? <Spinner className="h-5 w-5" /> : "Continue"}
       </button>
@@ -206,9 +206,9 @@ const EmailPage: NextComponentType<NextPageContext, {}, EmailPageProps> = ({
         }}
         className="flex flex-col space-y-4"
       >
-        <h1 className="text-gray-100 text-3xl font-bold">Sign in</h1>
+        <h1 className="text-zinc-100 text-3xl font-bold">Sign in</h1>
         <div className="flex flex-col space-y-1 pb-5">
-          <label htmlFor="email" className="text-gray-100 font-medium text-sm">
+          <label htmlFor="email" className="text-zinc-100 font-medium text-sm">
             Email
           </label>
           <input
@@ -222,7 +222,7 @@ const EmailPage: NextComponentType<NextPageContext, {}, EmailPageProps> = ({
             name="email"
             id="email"
             className={
-              "form-input p-4 font-medium rounded-lg focus:outline-none bg-black text-gray-400 border-zinc-800 border " +
+              "form-input p-4 font-medium rounded-lg focus:outline-none bg-black text-zinc-400 border-zinc-800 border " +
               (error ? "border-red-500" : "focus:border-blue-500")
             }
           ></input>
@@ -230,14 +230,14 @@ const EmailPage: NextComponentType<NextPageContext, {}, EmailPageProps> = ({
         </div>
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-gray-900 flex items-center justify-center"
+          className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-zinc-900 flex items-center justify-center"
         >
           {loading ? <Spinner className="h-5 w-5" /> : "Continue"}
         </button>
         <button
           onClick={() => setLogin(false)}
           type="button"
-          className=" hover:bg-gray-900 hover:bg-opacity-30 w-full border border-zinc-800 p-4 rounded-lg font-medium tracking-wide text-gray-100"
+          className=" hover:bg-zinc-900 hover:bg-opacity-30 w-full border border-zinc-800 p-4 rounded-lg font-medium tracking-wide text-zinc-100"
         >
           Create account
         </button>
@@ -333,9 +333,9 @@ const SignUpPage: NextComponentType<NextPageContext, {}, SignUpPageProps> = ({
         }}
         className="flex flex-col space-y-4"
       >
-        <h1 className="text-gray-100 text-3xl font-bold">Sign up</h1>
+        <h1 className="text-zinc-100 text-3xl font-bold">Sign up</h1>
         <div className="flex flex-col space-y-1">
-          <label htmlFor="email" className="text-gray-100 font-medium text-sm">
+          <label htmlFor="email" className="text-zinc-100 font-medium text-sm">
             Email
           </label>
           <input
@@ -354,14 +354,14 @@ const SignUpPage: NextComponentType<NextPageContext, {}, SignUpPageProps> = ({
             name="email"
             id="email"
             className={
-              "form-input p-4 font-medium rounded-lg focus:outline-none bg-black text-gray-400 border-zinc-800 border " +
+              "form-input p-4 font-medium rounded-lg focus:outline-none bg-black text-zinc-400 border-zinc-800 border " +
               (emailError ? "border-red-500" : "focus:border-blue-500")
             }
           ></input>
           <p className="text-red-500 font-medium text-sm">{emailError}</p>
         </div>
         <div className="flex flex-col space-y-1 pb-5">
-          <label htmlFor="email" className="text-gray-100 font-medium text-sm">
+          <label htmlFor="email" className="text-zinc-100 font-medium text-sm">
             Password
           </label>
           <div className="w-full relative">
@@ -382,7 +382,7 @@ const SignUpPage: NextComponentType<NextPageContext, {}, SignUpPageProps> = ({
               spellCheck={false}
               type={showPassword ? "text" : "password"}
               className={
-                "form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-gray-400 border-zinc-800 border " +
+                "form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-zinc-400 border-zinc-800 border " +
                 (error ? "border-red-500" : "focus:border-blue-500")
               }
             ></input>
@@ -392,9 +392,9 @@ const SignUpPage: NextComponentType<NextPageContext, {}, SignUpPageProps> = ({
               className="cursor-pointer absolute inset-y-0 right-0 pr-4 flex items-center"
             >
               {showPassword ? (
-                <EyeIcon className="h-5 text-gray-400" />
+                <EyeIcon className="h-5 text-zinc-400" />
               ) : (
-                <EyeOffIcon className="h-5 text-gray-400" />
+                <EyeOffIcon className="h-5 text-zinc-400" />
               )}
             </button>
           </div>
@@ -404,14 +404,14 @@ const SignUpPage: NextComponentType<NextPageContext, {}, SignUpPageProps> = ({
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-gray-900 flex items-center justify-center"
+          className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-zinc-900 flex items-center justify-center"
         >
           {loading ? <Spinner className="h-5 w-5" /> : "Continue"}
         </button>
         <button
           type="button"
           onClick={() => setLogin(true)}
-          className=" hover:bg-gray-900 hover:bg-opacity-30 w-full border border-zinc-800 p-4 rounded-lg font-medium tracking-wide text-gray-100"
+          className=" hover:bg-zinc-900 hover:bg-opacity-30 w-full border border-zinc-800 p-4 rounded-lg font-medium tracking-wide text-zinc-100"
         >
           Already have an account?
         </button>

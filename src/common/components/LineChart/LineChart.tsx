@@ -21,11 +21,11 @@ export default function LineChart({
   const options: { options: ApexOptions; loadingOptions: ApexOptions } = {
     options: {
       theme: {
-        mode: "dark",
+        mode: dark ? "dark" : "light",
         palette: "palette1",
         monochrome: {
-          enabled: false,
-          color: "#255aee",
+          enabled: true,
+          color: "#2563eb",
           shadeTo: "light",
           shadeIntensity: 0.65,
         },
@@ -50,6 +50,7 @@ export default function LineChart({
           fontFamily: "font-family: Inter",
         },
       },
+
       stroke: {
         show: true,
         curve: "smooth",
@@ -83,11 +84,7 @@ export default function LineChart({
           },
         },
       },
-      tooltip: {
-        marker: {
-          show: true,
-        },
-      },
+
       xaxis: {
         crosshairs: {
           show: false,
@@ -102,27 +99,29 @@ export default function LineChart({
         tickAmount: 5,
         axisBorder: {
           show: true,
-          offsetY: 6,
-          color: "#18181b",
+          offsetY: 0,
+          //@ts-ignore
+          height: 3,
+          color: dark ? "#18181b" : "#d4d4d8",
         },
         labels: {
           formatter: function (value) {
             return DateTime.fromISO(value).toFormat("LLL d");
           },
           style: {
-            colors: dark ? "#71717a" : "#9ca3af",
+            colors: dark ? "#71717a" : "#71717a",
             fontSize: "12px",
             fontFamily: "font-family: Inter",
-            fontWeight: 600,
+            fontWeight: 500,
           },
         },
       },
     },
     loadingOptions: {
-      colors: ["#27272a"],
+      colors: dark ? ["#27272a"] : ["#d4d4d8"],
       fill: {
         type: "solid",
-        colors: ["#18181b"],
+        colors: dark ? ["#18181b"] : ["#d4d4d8"],
       },
       chart: {
         sparkline: {
@@ -152,12 +151,12 @@ export default function LineChart({
   const dataOptions = ["1w", "1m"];
 
   return isLoading ? (
-    <div className="relative overflow-hidden rounded-2xl border  dark:border-zinc-900  border-gray-100 dark:bg-black space-y-3 opacity-70">
+    <div className="relative overflow-hidden rounded-2xl border  dark:border-zinc-900  border-zinc-100 dark:bg-black space-y-3 opacity-70">
       <div className="space-y-3 p-5">
-        <p className="h-4 bg-zinc-900 sm:w-60 w-1/2 rounded-full"></p>
-        <p className="h-3 bg-zinc-900 sm:w-96 w-1/4 rounded-full"></p>
+        <p className="h-4 dark:bg-zinc-900 bg-zinc-300 sm:w-60 w-1/2 rounded-full"></p>
+        <p className="h-3 dark:bg-zinc-900 bg-zinc-300 sm:w-96 w-1/4 rounded-full"></p>
       </div>
-      <div className="before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-rose-100/10 before:to-transparent">
+      <div className="before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t dark:before:border-rose-100/10 before:border-zinc-300 before:bg-gradient-to-r before:from-transparent dark:before:via-rose-100/10 before:via-zinc-100 before:to-transparent">
         <div className=" ">
           <Chart
             options={options.loadingOptions}
@@ -174,11 +173,13 @@ export default function LineChart({
       </div>
     </div>
   ) : (
-    <div className="rounded-2xl  p-5 border  dark:border-zinc-900  border-gray-100 dark:bg-black space-y-3">
+    <div className="rounded-2xl  p-5 border  dark:border-zinc-900  border-zinc-100 dark:bg-black space-y-3">
       <div className="flex justify-between items-start">
         <span>
-          <h1 className="font-medium text-zinc-100 text-xl">Requests</h1>
-          <p className="text-zinc-400">
+          <h1 className="text-lg leading-6 font-medium text-zinc-900 dark:text-zinc-100">
+            Requests
+          </h1>
+          <p className="dark:text-zinc-400 text-zinc-500">
             {seriesOption === "1w" ? "Over last 7 days" : "Over last 30 days"}
           </p>
         </span>
@@ -189,8 +190,8 @@ export default function LineChart({
               className={clsx(
                 "uppercase transition-colors duration-300 ",
                 seriesOption === option
-                  ? "text-blue-500"
-                  : "text-zinc-500 hover:text-zinc-100"
+                  ? "text-blue-600 "
+                  : "text-zinc-500 hover:text-zinc-400"
               )}
               onClick={() => setData(option)}
             >

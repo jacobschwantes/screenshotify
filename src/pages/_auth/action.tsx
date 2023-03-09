@@ -123,7 +123,7 @@ export default function Page() {
       <div className="flex h-screen w-screen items-center justify-center dark:bg-black  ">
         <div className="border border-zinc-900 rounded-2xl p-10 max-w-lg w-full space-y-14">
           <div className="flex justify-between items-center">
-            <h1 className="text-gray-100 text-3xl font-medium">
+            <h1 className="text-zinc-100 text-3xl font-medium">
               screenshotify
             </h1>
             <Tooltip label="logout">
@@ -133,7 +133,7 @@ export default function Page() {
             </Tooltip>
           </div>
           <div className=" space-y-4">
-            <h1 className="text-gray-100 text-3xl font-bold">Uh oh..</h1>
+            <h1 className="text-zinc-100 text-3xl font-bold">Uh oh..</h1>
             <p className="text-zinc-400 font-medium text-sm">{error}</p>
           </div>
           <div className="space-y-3">
@@ -143,7 +143,7 @@ export default function Page() {
               </a>
             </Link>
             <Link href="mailto:support@screenshotify.io">
-              <a className=" hover:bg-gray-900 hover:bg-opacity-30 w-full border border-zinc-800 p-4 rounded-lg font-medium tracking-wide text-gray-100 flex items-center justify-center">
+              <a className=" hover:bg-zinc-900 hover:bg-opacity-30 w-full border border-zinc-800 p-4 rounded-lg font-medium tracking-wide text-zinc-100 flex items-center justify-center">
                 Contact Support
               </a>
             </Link>
@@ -156,10 +156,10 @@ export default function Page() {
     return (
       <div className="flex h-screen w-screen items-center justify-center dark:bg-black  ">
         <div className="border border-zinc-900 rounded-2xl p-10 max-w-lg w-full space-y-14">
-          <h1 className="text-gray-100 text-3xl font-medium">screenshotify</h1>
+          <h1 className="text-zinc-100 text-3xl font-medium">screenshotify</h1>
 
           <div className=" space-y-4">
-            <h1 className="text-gray-100 text-3xl font-bold">Email verified</h1>
+            <h1 className="text-zinc-100 text-3xl font-bold">Email verified</h1>
             <p className="text-zinc-400 font-medium text-sm">
               Your account is now activated and ready to use.
             </p>
@@ -179,13 +179,13 @@ export default function Page() {
     return (
       <div className="flex h-screen w-screen items-center justify-center dark:bg-black  ">
         <div className="border border-zinc-900 rounded-2xl p-10 max-w-lg w-full space-y-5">
-          <h1 className="text-gray-100 text-3xl font-medium mb-12">
+          <h1 className="text-zinc-100 text-3xl font-medium mb-12">
             screenshotify
           </h1>
           {success ? (
             <div className="flex flex-col space-y-14">
               <div className=" space-y-4">
-                <h1 className="text-gray-100 text-3xl font-bold">
+                <h1 className="text-zinc-100 text-3xl font-bold">
                   Password reset
                 </h1>
                 <p className="text-zinc-400 font-medium text-sm">
@@ -256,9 +256,9 @@ const PasswordPage: NextComponentType<
         }}
         className="flex flex-col space-y-4"
       >
-        <h1 className="text-gray-100 text-3xl font-bold">Reset password</h1>
+        <h1 className="text-zinc-100 text-3xl font-bold">Reset password</h1>
         <div className="flex flex-col space-y-1">
-          <label htmlFor="email" className="text-gray-100 font-medium text-sm">
+          <label htmlFor="email" className="text-zinc-100 font-medium text-sm">
             Password
           </label>
           <div className="w-full relative">
@@ -278,7 +278,7 @@ const PasswordPage: NextComponentType<
               spellCheck={false}
               type={showPassword ? "text" : "password"}
               className={
-                "form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-gray-400 border-zinc-800 border " +
+                "form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-zinc-400 border-zinc-800 border " +
                 (passwordError ? "border-red-500" : "focus:border-blue-500")
               }
             ></input>
@@ -288,16 +288,16 @@ const PasswordPage: NextComponentType<
               className="cursor-pointer absolute inset-y-0 right-0 pr-4 flex items-center"
             >
               {showPassword ? (
-                <EyeIcon className="h-5 text-gray-400" />
+                <EyeIcon className="h-5 text-zinc-400" />
               ) : (
-                <EyeOffIcon className="h-5 text-gray-400" />
+                <EyeOffIcon className="h-5 text-zinc-400" />
               )}
             </button>
           </div>
           <p className="text-red-500 font-medium text-sm">{passwordError}</p>
         </div>
         <div className="flex flex-col space-y-1 pb-5">
-          <label htmlFor="email" className="text-gray-100 font-medium text-sm">
+          <label htmlFor="email" className="text-zinc-100 font-medium text-sm">
             Confirm password
           </label>
           <div className="w-full relative">
@@ -320,7 +320,7 @@ const PasswordPage: NextComponentType<
               spellCheck={false}
               type={showPassword ? "text" : "password"}
               className={
-                "form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-gray-400 border-zinc-800 border " +
+                "form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-zinc-400 border-zinc-800 border " +
                 (passwordCheckError
                   ? "border-red-500"
                   : "focus:border-blue-500")
@@ -332,9 +332,9 @@ const PasswordPage: NextComponentType<
               className="cursor-pointer absolute inset-y-0 right-0 pr-4 flex items-center"
             >
               {showPassword ? (
-                <EyeIcon className="h-5 text-gray-400" />
+                <EyeIcon className="h-5 text-zinc-400" />
               ) : (
-                <EyeOffIcon className="h-5 text-gray-400" />
+                <EyeOffIcon className="h-5 text-zinc-400" />
               )}
             </button>
           </div>
@@ -346,7 +346,7 @@ const PasswordPage: NextComponentType<
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-gray-900 flex items-center justify-center"
+          className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-zinc-900 flex items-center justify-center"
         >
           {loading ? <Spinner className="h-5 w-5" /> : "Continue"}
         </button>

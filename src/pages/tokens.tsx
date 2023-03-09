@@ -23,12 +23,9 @@ import { useTokens, useToken } from "@hooks/swr";
 import { useSWRConfig } from "swr";
 import { RadioGroup } from "@headlessui/react";
 import { User } from "firebase/auth";
-import { ApiKey } from "@customTypes/global";
-interface TokensProps {
-  idToken: string;
-  user: User;
-}
-const Tokens: NextPage<TokensProps> = (props) => {
+import { ApiKey, PageProps } from "@customTypes/global";
+
+const Tokens: NextPage<PageProps> = (props) => {
   const { mutate } = useSWRConfig();
   const [showKeys, setShowKeys] = useState(false);
   const [copiedId, setCopiedId] = useState("");
@@ -185,9 +182,9 @@ const Tokens: NextPage<TokensProps> = (props) => {
 
   return (
     <div className="flex flex-col items-start  p-5">
-      <div className="pb-5  border-b border-gray-200 dark:border-zinc-700 dark:border-none sm:flex sm:flex-row  w-full flex-col sm:space-x-3 space-y-3 sm:space-y-0">
+      <div className="pb-5 mb-5  border-b border-zinc-200 dark:border-zinc-700 dark:border-none sm:flex sm:flex-row  w-full flex-col sm:space-x-3 space-y-3 sm:space-y-0">
         <div className="flex justify-between items-center flex-1">
-          <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-zinc-100">
+          <h3 className="text-lg leading-6 font-medium text-zinc-900 dark:text-zinc-100">
             API Keys
           </h3>
           <div className="flex space-x-3">
@@ -199,11 +196,11 @@ const Tokens: NextPage<TokensProps> = (props) => {
                 setSpin(true);
                 mutate(["/api/user/tokens", idToken]);
               }}
-              className="inline-flex items-center p-2 border border-gray-300 dark:border-zinc-800 dark:bg-black rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 dark:hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:ring-offset-zinc-800 "
+              className="inline-flex items-center p-2 border border-zinc-300 dark:border-zinc-800 dark:bg-black rounded-md shadow-sm text-sm font-medium text-zinc-700 bg-white hover:bg-zinc-50 dark:hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:ring-offset-zinc-800 "
             >
               <RefreshIcon
                 className={clsx(
-                  "h-6 text-gray-400 dark:text-zinc-300 ",
+                  "h-6 text-zinc-400 dark:text-zinc-300 ",
                   spin && "animate-spin-slow"
                 )}
               />
@@ -211,12 +208,12 @@ const Tokens: NextPage<TokensProps> = (props) => {
             <button
               type="button"
               onClick={() => setShowKeys(!showKeys)}
-              className="inline-flex items-center p-2 border border-gray-300 dark:border-zinc-800 dark:bg-black rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 dark:hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:ring-offset-zinc-800"
+              className="inline-flex items-center p-2 border border-zinc-300 dark:border-zinc-800 dark:bg-black rounded-md shadow-sm text-sm font-medium text-zinc-700 bg-white hover:bg-zinc-50 dark:hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:ring-offset-zinc-800"
             >
-              {showKeys ? (
-                <EyeIcon className="h-6 text-gray-400 dark:text-zinc-300" />
+              {!showKeys ? (
+                <EyeIcon className="h-6 text-zinc-400 dark:text-zinc-300" />
               ) : (
-                <EyeOffIcon className="h-6 text-gray-400 dark:text-zinc-300" />
+                <EyeOffIcon className="h-6 text-zinc-400 dark:text-zinc-300" />
               )}
             </button>
           </div>
@@ -233,14 +230,14 @@ const Tokens: NextPage<TokensProps> = (props) => {
 
       {isLoading && (
         // <Spinner color="blue" />
-        <div className="space-y-5">
+        <div className="space-y-3">
           {Array.from(Array(5).keys()).map((item) => {
             return (
-              <div key={item} className="space-y-3 max-w-xl w-full">
+              <div key={item} className="space-y-2 max-w-xl w-full">
                 <div className=" w-1/4 h-3 dark:bg-zinc-800  rounded-lg animate-pulse"></div>
-                <div className="h-14 w-[90vw] sm:w-[34rem]  rounded-lg flex items-center justify-between p-5 overflow-hidden relative bg-white dark:bg-black border shadow-lg dark:shadow-none shadow-gray-100  border-gray-200 dark:border-zinc-900 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-rose-100/10 before:to-transparent">
-                  <div className=" w-3/4 h-3 bg-zinc-800 rounded-lg "></div>
-                  <DuplicateIcon className="h-6 text-gray-600 hover:text-blue-500 transition-colors " />
+                <div className="h-14 w-[90vw] sm:w-[34rem]  rounded-lg flex items-center justify-between p-5 overflow-hidden relative bg-white dark:bg-black border shadow-lg dark:shadow-none shadow-zinc-100  border-zinc-200 dark:border-zinc-900 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t dark:before:border-rose-100/10 before:border-zinc-300 before:bg-gradient-to-r before:from-transparent dark:before:via-rose-100/10 before:via-zinc-100 before:to-transparent">
+                  <div className=" w-3/4 h-3 dark:bg-zinc-800 bg-zinc-300 rounded-lg "></div>
+                  <DuplicateIcon className="h-6 text-zinc-300 hover:text-blue-500 transition-colors " />
                 </div>
               </div>
             );
@@ -254,7 +251,7 @@ const Tokens: NextPage<TokensProps> = (props) => {
           <div className="flex flex-col max-w-xl space-y-2 ">
             {tokens.keys.map((item: ApiKey, index: number) => (
               <div key={item.name} className={clsx("space-y-1 transition-all")}>
-                <p className="dark:text-zinc-200">{item.name}</p>
+                <p className="dark:text-zinc-200 text-zinc-800">{item.name}</p>
 
                 <div className={"flex space-x-2"}>
                   <div className={clsx("w-full relative")}>
@@ -264,7 +261,7 @@ const Tokens: NextPage<TokensProps> = (props) => {
                       spellCheck={false}
                       type="text"
                       className={clsx(
-                        " form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-gray-400 border-zinc-900 border-2 hover:outline-blue-500 hover:outline-1 hover:outline  transition-colors cursor-pointer",
+                        " form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none dark:bg-black dark:text-zinc-400 dark:border-zinc-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border-zinc-300 text-zinc-400 border hover:border-blue-600 transition-colors cursor-pointer",
                         !showKeys && "token-field"
                       )}
                     ></input>
@@ -275,7 +272,7 @@ const Tokens: NextPage<TokensProps> = (props) => {
                           navigator.clipboard.writeText(item.key);
                           toast(
                             <div className="flex items-center space-x-3">
-                              <ClipboardCheckIcon className="h-6 w-6 text-blue-500" />
+                              <ClipboardCheckIcon className="h-6 w-6 text-blue-600" />
                               <span>
                                 <p className="text-sm font-extralight">
                                   {item.name} copied to clipboard.
@@ -291,9 +288,9 @@ const Tokens: NextPage<TokensProps> = (props) => {
                         }}
                       >
                         {copiedId === `${index}` ? (
-                          <CheckIcon className="h-6 text-blue-500" />
+                          <CheckIcon className="h-6 text-blue-600" />
                         ) : (
-                          <DuplicateIcon className="h-6 text-gray-400 dark:text-zinc-300 hover:text-blue-500 transition-colors" />
+                          <DuplicateIcon className="h-6 text-zinc-400 dark:text-zinc-300 hover:text-blue-600 transition-colors" />
                         )}
                       </button>
                     </div>
@@ -303,16 +300,16 @@ const Tokens: NextPage<TokensProps> = (props) => {
                       setSelected(item.key);
                     }}
                   >
-                    <CogIcon className="h-6 text-gray-400 dark:hover:text-zinc-400 dark:text-zinc-300 transition-all" />
+                    <CogIcon className="h-6 text-zinc-400 dark:text-zinc-300 hover:text-blue-600 transition-colors" />
                   </button>
                 </div>
               </div>
             ))}
           </div>
-          {isTokenLoading && <Spinner className="h-5 w-5" />}
           {isTokenError && <div>Error: {isError.message}</div>}
           {token?.key && !isTokenLoading && (
             <TokenPage
+              theme={props.preferences.theme}
               setSelectedToken={setSelected}
               open={open}
               setOpen={setOpen}
@@ -346,6 +343,7 @@ interface TokenPageProps {
   open: boolean;
   setOpen: (setting: boolean) => void;
   setSelectedToken: (token: string) => void;
+  theme: string;
 }
 
 const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
@@ -355,6 +353,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
   open,
   setOpen,
   setSelectedToken,
+  theme
 }) => {
   const [tokenOptions, setTokenOptions] = useState(token);
   const [updateLoading, setUpdateLoading] = useState(false);
@@ -382,7 +381,8 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
-        className="relative z-10"
+        
+        className={clsx( (theme === "dark" ? "dark" : ""),"relative z-10  ")}
         initialFocus={cancelButtonRef}
         onClose={() => {
           setOpen(false);
@@ -412,13 +412,13 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative bg-black border border-zinc-900 rounded-2xl px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-4xl sm:w-full sm:p-6">
+              <Dialog.Panel className="relative dark:bg-black bg-zinc-50 border dark:border-zinc-900 border-zinc-400 rounded-2xl px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-4xl sm:w-full sm:p-6">
                 <div className="space-y-6">
-                  <h1 className="font-medium text-white text-lg">
+                  <h1 className="font-medium dark:text-white text-lg">
                     Token settings
                   </h1>
                   <div className="space-y-2">
-                    <h1 className="font-medium text-zinc-100 ">Name</h1>
+                    <h1 className="font-medium dark:text-zinc-100 text-zinc-800 ">Name</h1>
                     <input
                       value={tokenOptions.name}
                       onChange={(e) => {
@@ -427,7 +427,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                       }}
                       type="text"
                       className={clsx(
-                        "form-input text-sm p-3 sm:w-1/2 w-full font-medium rounded-lg focus:outline-none bg-black text-gray-400 border-zinc-900 border transition-colors",
+                        "form-input text-sm p-3 sm:w-1/2 w-full font-medium rounded-lg focus:outline-none dark:bg-black  dark:text-zinc-400 text-zinc-500 dark:border-zinc-900 border-zinc-300 border transition-colors",
                         error ? "border-red-500" : "hover:border-blue-500"
                       )}
                     />
@@ -435,18 +435,18 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                   </div>
                   <div className="space-y-3">
                     <div className="">
-                      <h1 className="font-medium text-zinc-100 ">
+                      <h1 className="font-medium dark:text-zinc-100 text-zinc-800 ">
                         Usage metrics
                       </h1>
-                      <p className="text-zinc-400 text-sm ">
+                      <p className="dark:text-zinc-400 text-zinc-600 text-sm ">
                         Usage resets on Aug 1, 2022
                       </p>
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between">
-                        <h1 className="text-zinc-200 font-medium ">Requests</h1>
-                        <p className="text-zinc-400 font-medium text-sm">
-                          <span className="text-zinc-200 ">{token.usage}</span>/{" "}
+                        <h1 className="dark:text-zinc-100 text-zinc-800 font-medium ">Requests</h1>
+                        <p className="dark:text-zinc-100 text-zinc-800 font-medium text-sm">
+                          <span className="dark:text-zinc-100 text-zinc-800 ">{token.usage} </span>/{" "}
                           {tokenOptions.quota_limit === "unlimited" ? (
                             <>&infin;</>
                           ) : (
@@ -455,7 +455,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                         </p>
                       </div>
                       {tokenOptions.quota_limit === "limited" && (
-                        <div className="h-3 w-full bg-zinc-900 rounded-full relative">
+                        <div className="h-1.5 w-full dark:bg-zinc-900 bg-zinc-200 rounded-full relative">
                           <span
                             style={{
                               width:
@@ -464,7 +464,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                                   : (token.usage / tokenOptions.quota) * 100 +
                                     "%",
                             }}
-                            className={`absolute h-3 bg-blue-600 rounded-full`}
+                            className={`absolute h-1.5 bg-blue-600 rounded-full`}
                           ></span>
                         </div>
                       )}
@@ -472,10 +472,10 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                   </div>
                   <div className=" space-y-3">
                     <div className="">
-                      <h1 className="font-medium text-zinc-100  ">
+                      <h1 className="font-medium dark:text-zinc-100 text-zinc-800  ">
                         Quota limit
                       </h1>
-                      <p className="text-zinc-400 text-sm ">
+                      <p className="dark:text-zinc-400 text-zinc-600 text-sm ">
                         Define whether this token would be quota limited
                       </p>
                     </div>
@@ -502,7 +502,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                                   : "",
                                 checked
                                   ? "bg-blue-50 border-blue-200 dark:border-blue-900 dark:bg-blue-900 z-10"
-                                  : "border-gray-200 dark:border-zinc-900",
+                                  : "border-zinc-200 dark:border-zinc-900",
                                 "relative border p-4 flex cursor-pointer focus:outline-none dark:bg-opacity-30"
                               )
                             }
@@ -513,7 +513,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                                   className={clsx(
                                     checked
                                       ? "bg-blue-600 border-transparent"
-                                      : "bg-white border-gray-300 dark:bg-black dark:border-zinc-800",
+                                      : "bg-white border-zinc-300 dark:bg-black dark:border-zinc-800",
                                     active
                                       ? "ring-2 ring-offset-2 ring-blue-600 dark:ring-offset-black"
                                       : "",
@@ -529,7 +529,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                                     className={clsx(
                                       checked
                                         ? "text-blue-900 dark:text-blue-500"
-                                        : "text-gray-900 dark:text-zinc-300",
+                                        : "text-zinc-900 dark:text-zinc-300",
                                       "block text-sm font-medium"
                                     )}
                                   >
@@ -540,7 +540,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                                     className={clsx(
                                       checked
                                         ? "text-blue-700 dark:text-blue-500"
-                                        : "text-gray-500 dark:text-zinc-400",
+                                        : "text-zinc-500 dark:text-zinc-400",
                                       "block text-sm"
                                     )}
                                   >
@@ -556,7 +556,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                     {tokenOptions.quota_limit === "limited" && (
                       <div className="flex items-center space-x-3">
                         <div className="relative pt-1 flex-1">
-                          <label className=" font-medium text-zinc-200">
+                          <label className=" font-medium dark:text-zinc-100 text-zinc-800">
                             Limit
                           </label>
                           <input
@@ -567,7 +567,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                               eventHandler("quota", parseInt(e.target.value))
                             }
                             type="range"
-                            className="appearance-none w-full h-3 p-0 focus:outline-none focus:ring-0 focus:shadow-none bg-zinc-900 rounded-full slider"
+                            className="appearance-none w-full h-1.5 p-0 focus:outline-none focus:ring-0 focus:shadow-none bg-blue-600 rounded-full slider"
                             id="customRange1"
                           />
                         </div>
@@ -579,7 +579,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                             eventHandler("quota", parseInt(e.target.value))
                           }
                           type="number"
-                          className="form-input max-w-[80px] font-medium text-sm rounded-lg focus:outline-none bg-black text-gray-400 border-zinc-900 border hover:outline-blue-500 hover:outline-1 hover:outline transition-colors cursor-pointer"
+                          className="form-input max-w-[80px] font-medium text-sm rounded-lg focus:outline-none dark:bg-black dark:text-zinc-400 text-zinc-500 dark:border-zinc-900 border-zinc-300 border hover:outline-blue-500 hover:outline-1 hover:outline transition-colors cursor-pointer"
                         />
                       </div>
                     )}
@@ -621,7 +621,9 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
                           <Spinner className="h-5 w-5" />
                         ) : (
                           <span>
-                            <span className="hidden sm:block">Revoke Token </span>
+                            <span className="hidden sm:block">
+                              Revoke Token{" "}
+                            </span>
                             <TrashIcon className="h-5 w-5 sm:hidden" />
                           </span>
                         )}

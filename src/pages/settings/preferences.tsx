@@ -37,15 +37,16 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
     marketing: true,
     transactional: true,
   });
-  const { data, isLoading, isError } = usePreferences(idToken);
+  const { preferences, isLoading, isError } = usePreferences(idToken);
 
   useEffect(() => {
     const foundOption = themeOptions.find(
-      (option) => option.id === data.preferences.theme
+      (option) => option.id === preferences.preferences.theme
     );
     foundOption && setSelectedTheme(foundOption);
-    data.preferences.email && setEmailOptions({ ...data.preferences.email });
-  }, [data]);
+    preferences.preferences.email &&
+      setEmailOptions({ ...preferences.preferences.email });
+  }, [preferences]);
 
   const saveChanges = async () => {
     setIsSaving(true);
@@ -105,8 +106,8 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
           <div className="max-w-4xl space-y-6 ">
             <RadioGroup value={selectedTheme} onChange={setSelectedTheme}>
               <RadioGroup.Label className="text-sm">
-                <h1 className="font-medium text-zinc-300">Theme</h1>
-                <p className="text-zinc-400">Select UI theme preference</p>
+                <h1 className="font-medium dark:text-zinc-300 text-zinc-800">Theme</h1>
+                <p className="dark:text-zinc-300 text-zinc-600">Select UI theme preference</p>
               </RadioGroup.Label>
 
               <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
@@ -116,181 +117,69 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                       <div className="space-y-2">
                         <div
                           className={clsx(
-                            checked ? "outline-blue-600" : "outline-zinc-800",
+                            checked ? "outline-blue-600" : "outline-none",
 
-                            "relative outline rounded-xl shadow-sm cursor-pointer focus:outline-none "
+                            "relative outline rounded-lg shadow-sm cursor-pointer focus:outline-none "
                           )}
                         >
                           {theme.title === "System preference" ? (
                             <div className="">
                               <div className="w-1/2 overflow-hidden h-full absolute">
-                                <div
-                                  className={clsx(
-                                    false ? "bg-zinc-900" : "  bg-zinc-200",
-                                    "pt-4 px-4  sm:w-[286px]  h-full aspect-video rounded-xl flex flex-col absolute  "
-                                  )}
-                                >
-                                  <div
-                                    className={clsx(
-                                      false ? "bg-black" : "bg-white",
-                                      "flex-1 rounded-t-lg flex flex-col"
-                                    )}
-                                  >
-                                    <div
-                                      className={clsx(
-                                        false
-                                          ? "border-zinc-800"
-                                          : "border-zinc-200",
-                                        "w-full border-b flex p-2"
-                                      )}
-                                    >
+                                <div className="pt-4 px-4  sm:w-[286px]  h-full aspect-video rounded-lg flex flex-col absolute  bg-zinc-200">
+                                  <div className="flex-1 rounded-t-xl bg-white flex flex-col">
+                                    <div className="w-full border-b flex p-2 border-zinc-200">
                                       <div className="flex space-x-1">
                                         <div className="bg-red-500 h-1.5 w-1.5 rounded-full" />
                                         <div className="bg-yellow-500 h-1.5 w-1.5 rounded-full" />
                                         <div className="bg-green-500 h-1.5 w-1.5 rounded-full" />
                                       </div>
                                     </div>
-                                    <div
-                                      className={clsx(
-                                        false
-                                          ? "divide-zinc-800"
-                                          : "divide-zinc-200",
-                                        "flex w-full flex-1 divide-x"
-                                      )}
-                                    >
+                                    <div className="flex w-full flex-1 divide-x divide-zinc-200">
                                       <div className="flex flex-col space-y-2 w-1/5 p-2">
                                         {Array.from(Array(5)).map((item) => (
                                           <div
                                             key={item}
-                                            className={clsx(
-                                              false
-                                                ? "bg-zinc-800"
-                                                : "bg-zinc-200",
-                                              "w-full h-1.5 rounded-full"
-                                            )}
+                                            className="w-full h-1.5 bg-zinc-200 rounded-full"
                                           />
                                         ))}
                                       </div>
                                       <div className="flex flex-col pt-2 px-2 flex-1 space-y-2">
                                         <div className="flex justify-between">
-                                          <div
-                                            className={clsx(
-                                              false
-                                                ? "bg-zinc-800"
-                                                : "bg-zinc-200",
-                                              "w-1/2 h-1.5 rounded-full"
-                                            )}
-                                          />
-                                          <div
-                                            className={clsx(
-                                              false
-                                                ? "bg-zinc-800"
-                                                : "bg-zinc-300",
-                                              "w-1/5 h-2.5 bg-zinc-800 rounded-sm"
-                                            )}
-                                          />
-                                          <div
-                                            className={clsx(
-                                              false
-                                                ? "bg-zinc-800"
-                                                : "bg-zinc-200",
-                                              "w-1/5 h-2.5 bg-zinc-700 rounded-sm"
-                                            )}
-                                          />
+                                          <div className="w-1/2 h-1.5 rounded-full bg-zinc-200" />
+                                          <div className="w-1/5 h-2.5 bg-zinc-300 rounded-sm" />
+                                          <div className="w-1/5 h-2.5  bg-zinc-200 rounded-sm" />
                                         </div>
-                                        <div
-                                          className={clsx(
-                                            false
-                                              ? "bg-zinc-800"
-                                              : "bg-zinc-200",
-                                            "rounded-t w-full flex-1"
-                                          )}
-                                        ></div>
+                                        <div className="rounded-t w-full bg-zinc-200 flex-1"></div>
                                       </div>
                                     </div>
                                   </div>
-                                </div>{" "}
+                                </div>
                               </div>
-                              <div
-                                className={clsx(
-                                  true ? "bg-zinc-900" : "  bg-zinc-200",
-                                  "pt-4 px-4  w-full aspect-video rounded-xl flex flex-col "
-                                )}
-                              >
-                                <div
-                                  className={clsx(
-                                    true ? "bg-black" : "bg-white",
-                                    "flex-1 rounded-t-lg flex flex-col"
-                                  )}
-                                >
-                                  <div
-                                    className={clsx(
-                                      true
-                                        ? "border-zinc-800"
-                                        : "border-zinc-200",
-                                      "w-full border-b flex p-2"
-                                    )}
-                                  >
+                              <div className="pt-4 px-4  w-full bg-zinc-900 aspect-video rounded-r-lg rounded-l-xl flex flex-col ">
+                                <div className="flex-1 rounded-t-lg bg-black flex flex-col">
+                                  <div className="w-full border-b flex p-2 border-zinc-800">
                                     <div className="flex space-x-1">
                                       <div className="bg-red-500 h-1.5 w-1.5 rounded-full" />
                                       <div className="bg-yellow-500 h-1.5 w-1.5 rounded-full" />
                                       <div className="bg-green-500 h-1.5 w-1.5 rounded-full" />
                                     </div>
                                   </div>
-                                  <div
-                                    className={clsx(
-                                      true
-                                        ? "divide-zinc-800"
-                                        : "divide-zinc-200",
-                                      "flex w-full flex-1 divide-x"
-                                    )}
-                                  >
+                                  <div className="flex w-full flex-1 divide-x divide-zinc-800">
                                     <div className="flex flex-col space-y-2 w-1/5 p-2">
                                       {Array.from(Array(5)).map((item) => (
                                         <div
                                           key={item}
-                                          className={clsx(
-                                            true
-                                              ? "bg-zinc-800"
-                                              : "bg-zinc-200",
-                                            "w-full h-1.5 rounded-full"
-                                          )}
+                                          className="w-full h-1.5 rounded-full bg-zinc-800"
                                         />
                                       ))}
                                     </div>
                                     <div className="flex flex-col pt-2 px-2 flex-1 space-y-2">
                                       <div className="flex justify-between">
-                                        <div
-                                          className={clsx(
-                                            true
-                                              ? "bg-zinc-800"
-                                              : "bg-zinc-200",
-                                            "w-1/2 h-1.5 rounded-full"
-                                          )}
-                                        />
-                                        <div
-                                          className={clsx(
-                                            true
-                                              ? "bg-zinc-800"
-                                              : "bg-zinc-300",
-                                            "w-1/5 h-2.5 bg-zinc-800 rounded-sm"
-                                          )}
-                                        />
-                                        <div
-                                          className={clsx(
-                                            true
-                                              ? "bg-zinc-800"
-                                              : "bg-zinc-200",
-                                            "w-1/5 h-2.5 bg-zinc-700 rounded-sm"
-                                          )}
-                                        />
+                                        <div className="w-1/2 h-1.5 rounded-full bg-zinc-800" />
+                                        <div className="w-1/5 h-2.5 bg-zinc-800 rounded-sm" />
+                                        <div className="w-1/5 h-2.5 bg-zinc-800 rounded-sm" />
                                       </div>
-                                      <div
-                                        className={clsx(
-                                          true ? "bg-zinc-800" : "bg-zinc-200",
-                                          "rounded-t w-full flex-1"
-                                        )}
-                                      ></div>
+                                      <div className="bg-zinc-800 rounded-t-lg w-full flex-1"></div>
                                     </div>
                                   </div>
                                 </div>
@@ -302,7 +191,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                                 theme.title === "Dark"
                                   ? "bg-zinc-900"
                                   : "bg-zinc-200",
-                                "pt-4 px-4  w-full aspect-video rounded-xl flex flex-col"
+                                "pt-4 px-4  w-full aspect-video rounded-lg flex flex-col"
                               )}
                             >
                               <div
@@ -362,8 +251,8 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                                         className={clsx(
                                           theme.title === "Dark"
                                             ? "bg-zinc-800"
-                                            : "bg-zinc-300",
-                                          "w-1/5 h-2.5 bg-zinc-800 rounded-sm"
+                                            : "bg-zinc-200",
+                                          "w-1/5 h-2.5 rounded-sm"
                                         )}
                                       />
                                       <div
@@ -371,7 +260,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                                           theme.title === "Dark"
                                             ? "bg-zinc-800"
                                             : "bg-zinc-200",
-                                          "w-1/5 h-2.5 bg-zinc-700 rounded-sm"
+                                          "w-1/5 h-2.5 rounded-sm"
                                         )}
                                       />
                                     </div>
@@ -404,7 +293,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                             />{" "}
                           </span>
                         </div>
-                        <p className="text-zinc-200 text-sm  font-medium">
+                        <p className="dark:text-zinc-200 text-zinc-600 text-sm  font-medium">
                           {theme.title}
                         </p>
                       </div>
@@ -414,13 +303,13 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
               </div>
             </RadioGroup>
 
-            <fieldset className="border-b border-zinc-800">
+            <fieldset className="border-b dark:border-zinc-800 border-zinc-300">
               <legend className="sr-only">Email preferences</legend>
 
-              <div className="divide-y divide-zinc-800">
+              <div className="divide-y dark:divide-zinc-800 divide-zinc-300">
                 <div className="text-sm pb-4">
-                  <h1 className="font-medium text-zinc-300">Email</h1>
-                  <p className="text-zinc-400">
+                  <h1 className="font-medium dark:text-zinc-300 text-zinc-800">Email</h1>
+                  <p className="text-zinc-500">
                     Select email messaging preferences
                   </p>
                 </div>
@@ -429,13 +318,13 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                   <div className="min-w-0 flex-1 text-sm">
                     <label
                       htmlFor="marketing-news"
-                      className="font-medium text-zinc-300"
+                      className="font-medium dark:text-zinc-300 text-zinc-800"
                     >
                       Marketing & News
                     </label>
                     <p
                       id="marketing-news-description"
-                      className="text-zinc-400"
+                      className="text-zinc-500"
                     >
                       Get notified when new features release or when there are
                       major changes to the platform.
@@ -454,7 +343,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                       aria-describedby="marketing-news-description"
                       name="marketing-news"
                       type="checkbox"
-                      className="form-checkbox focus:ring-blue-600 focus:ring-offset-black h-4 w-4 text-blue-600 border-zinc-900 rounded bg-zinc-800"
+                      className="form-checkbox focus:ring-blue-600 dark:focus:ring-offset-black h-4 w-4 text-blue-600 dark:border-zinc-900 rounded dark:bg-zinc-800"
                     />
                   </div>
                 </div>
@@ -462,11 +351,11 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                   <div className="min-w-0 flex-1 text-sm">
                     <label
                       htmlFor="transactional"
-                      className="font-medium text-zinc-300"
+                      className="font-medium dark:text-zinc-300 text-zinc-800"
                     >
                       Transactional
                     </label>
-                    <p id="trnsactional-description" className="text-zinc-400">
+                    <p id="trnsactional-description" className="text-zinc-500">
                       Get notified when you run out of quota and when changes
                       are made to your account.
                     </p>
@@ -484,7 +373,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                       aria-describedby="transactional-description"
                       name="transactional"
                       type="checkbox"
-                      className="form-checkbox focus:ring-blue-600 focus:ring-offset-black h-4 w-4 text-blue-600 border-zinc-900 rounded bg-zinc-800"
+                      className="form-checkbox focus:ring-blue-600 dark:focus:ring-offset-black h-4 w-4 text-blue-600 dark:border-zinc-900 rounded dark:bg-zinc-800"
                     />
                   </div>
                 </div>
@@ -492,11 +381,11 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                   <div className="min-w-0 flex-1 text-sm">
                     <label
                       htmlFor="billing"
-                      className="font-medium text-zinc-300"
+                      className="font-medium dark:text-zinc-300 text-zinc-800"
                     >
                       Billing
                     </label>
-                    <p id="billing-description" className="text-zinc-400">
+                    <p id="billing-description" className="text-zinc-500">
                       Get notified when quota resets and when new invoices are
                       available.
                     </p>
@@ -514,20 +403,20 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                       aria-describedby="billing-description"
                       name="billing"
                       type="checkbox"
-                      className="form-checkbox focus:ring-blue-600 focus:ring-offset-black h-4 w-4 text-blue-600 border-zinc-900 rounded bg-zinc-800"
+                      className="form-checkbox focus:ring-blue-600 dark:focus:ring-offset-black h-4 w-4 text-blue-600 dark:border-zinc-900 rounded dark:bg-zinc-800"
                     />
                   </div>
                 </div>
               </div>
             </fieldset>
-            {(!isEqual(data.preferences.email, emailOptions) ||
-              !isEqual(data.preferences.theme, selectedTheme.id)) && (
-              <div className=" py-3 bg-gray-50 dark:bg-black text-right">
+            {(!isEqual(preferences.preferences.email, emailOptions) ||
+              !isEqual(preferences.preferences.theme, selectedTheme.id)) && (
+              <div className=" py-3 text-right">
                 <button
                   disabled={isSaving}
                   type="button"
                   onClick={saveChanges}
-                  className="bg-blue-600  border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                  className="bg-blue-600  border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900"
                 >
                   {isSaving ? <Spinner className="h-5" /> : <span>Save</span>}
                 </button>

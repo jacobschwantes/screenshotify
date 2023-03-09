@@ -54,7 +54,7 @@ const Billing: NextPage = () => {
                       <div>
                         <h2
                           id="plan-heading"
-                          className="text-lg leading-6 font-medium text-gray-900 dark:text-zinc-100"
+                          className="text-lg leading-6 font-medium text-zinc-900 dark:text-zinc-100"
                         >
                           Plan
                         </h2>
@@ -82,7 +82,7 @@ const Billing: NextPage = () => {
                                     : "",
                                   checked
                                     ? "bg-blue-50 border-blue-200 dark:border-blue-900 dark:bg-blue-900 dark:bg-opacity-50 z-10"
-                                    : "border-gray-200 dark:border-zinc-800",
+                                    : "border-zinc-200 dark:border-zinc-800",
                                   "relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none"
                                 )
                               }
@@ -94,9 +94,9 @@ const Billing: NextPage = () => {
                                       className={clsx(
                                         checked
                                           ? "bg-blue-500 border-transparent"
-                                          : "bg-white border-gray-300",
+                                          : "bg-white border-zinc-300",
                                         active
-                                          ? "ring-2 ring-offset-2 ring-gray-900"
+                                          ? "ring-2 ring-offset-2 ring-zinc-900"
                                           : "",
                                         "h-4 w-4 rounded-full border flex items-center justify-center"
                                       )}
@@ -106,7 +106,7 @@ const Billing: NextPage = () => {
                                     </span>
                                     <RadioGroup.Label
                                       as="span"
-                                      className="ml-3 font-medium text-gray-900 dark:text-zinc-300 "
+                                      className="ml-3 font-medium text-zinc-900 dark:text-zinc-300 "
                                     >
                                       {plan.name}
                                     </RadioGroup.Label>
@@ -119,7 +119,7 @@ const Billing: NextPage = () => {
                                       className={clsx(
                                         checked
                                           ? "text-blue-900 dark:text-blue-500"
-                                          : "text-gray-900 dark:text-zinc-300",
+                                          : "text-zinc-900 dark:text-zinc-300",
                                         "font-medium"
                                       )}
                                     >
@@ -130,7 +130,7 @@ const Billing: NextPage = () => {
                                       className={
                                         checked
                                           ? "text-blue-700 dark:text-blue-500"
-                                          : "text-gray-500 dark:text-zinc-400"  
+                                          : "text-zinc-500 dark:text-zinc-400"  
                                       }
                                     >
                                       {annualBillingEnabled ? 'billed yearly' : 'billed monthly'} 
@@ -141,7 +141,7 @@ const Billing: NextPage = () => {
                                     className={clsx(
                                       checked
                                         ? "text-blue-700 dark:text-blue-500"
-                                        : "text-gray-500",
+                                        : "text-zinc-500",
                                       "ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right"
                                     )}
                                   >
@@ -174,17 +174,17 @@ const Billing: NextPage = () => {
                           />
                         </Switch>
                         <Switch.Label as="span" className="ml-3">
-                          <span className="text-sm font-medium text-gray-900 dark:text-zinc-100">
+                          <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
                             Annual billing
                           </span>
                         </Switch.Label>
                       </Switch.Group>
                     </div>
-                    <div className="px-4 py-3 bg-gray-50 dark:bg-black text-right sm:px-6">
+                    <div className="px-4 py-3 bg-zinc-50 dark:bg-black text-right sm:px-6">
                       <button
                       disabled
                         type="submit"
-                        className="bg-blue-600  border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                        className="bg-blue-600  border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900"
                       >
                         Save
                       </button>
@@ -199,7 +199,7 @@ const Billing: NextPage = () => {
                   <div className="px-4 sm:px-6">
                     <h2
                       id="billing-history-heading"
-                      className="text-lg leading-6 font-medium text-gray-900"
+                      className="text-lg leading-6 font-medium text-zinc-900"
                     >
                       Billing history
                     </h2>
@@ -207,25 +207,25 @@ const Billing: NextPage = () => {
                   <div className="mt-6 flex flex-col">
                     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                       <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                        <div className="overflow-hidden border-t border-gray-200">
-                          <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
+                        <div className="overflow-hidden border-t border-zinc-200">
+                          <table className="min-w-full divide-y divide-zinc-200">
+                            <thead className="bg-zinc-50">
                               <tr>
                                 <th
                                   scope="col"
-                                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                  className="px-6 py-3 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider"
                                 >
                                   Date
                                 </th>
                                 <th
                                   scope="col"
-                                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                  className="px-6 py-3 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider"
                                 >
                                   Description
                                 </th>
                                 <th
                                   scope="col"
-                                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                  className="px-6 py-3 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider"
                                 >
                                   Amount
                                 </th>
@@ -234,24 +234,24 @@ const Billing: NextPage = () => {
                                   */}
                                 {/* <th
                                   scope="col"
-                                  className="relative px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                  className="relative px-6 py-3 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider"
                                 >
                                   <span className="sr-only">View receipt</span>
                                 </th>
                               </tr>
                             </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
+                            <tbody className="bg-white divide-y divide-zinc-200">
                               {payments.map((payment) => (
                                 <tr key={payment.id}>
-                                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zinc-900">
                                     <time dateTime={payment.datetime}>
                                       {payment.date}
                                     </time>
                                   </td>
-                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-500">
                                     {payment.description}
                                   </td>
-                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-500">
                                     {payment.amount}
                                   </td>
                                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

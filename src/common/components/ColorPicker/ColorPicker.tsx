@@ -46,7 +46,7 @@ const ColorPicker: NextComponentType<NextPageContext, {}, ColorPickerProps> = ({
       >
         <button
           style={{ background: color }}
-          className="rounded-full p-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 border-zinc-500 border-2 z-10 border-opacity-30 "
+          className="rounded-full p-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 border-zinc-500 border-2 z-10 border-opacity-30 "
         />
       </Popover>
     </div>

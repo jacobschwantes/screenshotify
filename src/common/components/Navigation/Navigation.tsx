@@ -53,8 +53,8 @@ export default function Navigation({ wideNav }: NavigationProps) {
               className={clsx(
                 item.current
                   ? "bg-blue-200 text-blue-600 dark:bg-blue-900 dark:text-blue-600   "
-                  : "text-gray-300  ",
-                " flex items-center  p-3 rounded-lg border border-transparent text-center transition-all  hover:bg-gray-100 dark:hover:bg-zinc-900 dark:bg-opacity-50 "
+                  : "text-zinc-400 dark:text-zinc-300 ",
+                " flex items-center  p-3 rounded-lg border border-transparent text-center transition-all  hover:bg-zinc-100 dark:hover:bg-zinc-900 dark:bg-opacity-50 "
               )}
             >
               <item.icon
@@ -78,7 +78,7 @@ export default function Navigation({ wideNav }: NavigationProps) {
             signOut(auth);
           }}
           className={clsx(
-            " flex items-center  p-3 rounded-lg border border-transparent text-center  text-gray-300 transition-all hover:bg-gray-100 dark:hover:bg-zinc-900 dark:bg-opacity-50 "
+            " flex items-center  p-3 rounded-lg border border-transparent text-center  text-zinc-400 dark:text-zinc-300 transition-all hover:bg-zinc-100 dark:hover:bg-zinc-900 dark:bg-opacity-50 "
           )}
         >
           <LogoutIcon

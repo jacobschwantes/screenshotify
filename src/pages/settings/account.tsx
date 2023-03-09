@@ -53,8 +53,8 @@ const Account: NextPage<AccountProps> = (props) => {
     <div className="flex-1  p-5 h-full overflow-y-auto ">
       <SettingsLayout>
         <main className="  space-y-5 max-w-7xl">
-          <p className="text-zinc-100 font-medium">
-            Signed in as: <span className="font-normal text-zinc-300">{props.user.email}</span>
+          <p className="dark:text-zinc-300 font-medium">
+            Signed in as: <span className="font-normal ">{props.user.email}</span>
           </p>
           <button
             onClick={handleResetPassword}
@@ -73,11 +73,11 @@ const Account: NextPage<AccountProps> = (props) => {
                       <div>
                         <h2
                           id="payment-details-heading"
-                          className="text-lg leading-6 font-medium text-gray-900"
+                          className="text-lg leading-6 font-medium text-zinc-900"
                         >
                           Payment details
                         </h2>
-                        <p className="mt-1 text-sm text-gray-500">
+                        <p className="mt-1 text-sm text-zinc-500">
                           Update your billing information. Please note that
                           updating your location could affect your tax rates.
                         </p>
@@ -87,7 +87,7 @@ const Account: NextPage<AccountProps> = (props) => {
                         <div className="col-span-4 sm:col-span-2">
                           <label
                             htmlFor="first-name"
-                            className="block text-sm font-medium text-gray-700"
+                            className="block text-sm font-medium text-zinc-700"
                           >
                             First name
                           </label>
@@ -96,14 +96,14 @@ const Account: NextPage<AccountProps> = (props) => {
                             name="first-name"
                             id="first-name"
                             autoComplete="cc-given-name"
-                            className="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                            className="form-input mt-1 block w-full border border-zinc-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-zinc-900 focus:border-zinc-900 sm:text-sm"
                           />
                         </div>
 
                         <div className="col-span-4 sm:col-span-2">
                           <label
                             htmlFor="last-name"
-                            className="block text-sm font-medium text-gray-700"
+                            className="block text-sm font-medium text-zinc-700"
                           >
                             Last name
                           </label>
@@ -112,14 +112,14 @@ const Account: NextPage<AccountProps> = (props) => {
                             name="last-name"
                             id="last-name"
                             autoComplete="cc-family-name"
-                            className="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                            className="form-input mt-1 block w-full border border-zinc-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-zinc-900 focus:border-zinc-900 sm:text-sm"
                           />
                         </div>
 
                         <div className="col-span-4 sm:col-span-2">
                           <label
                             htmlFor="email-address"
-                            className="block text-sm font-medium text-gray-700"
+                            className="block text-sm font-medium text-zinc-700"
                           >
                             Email address
                           </label>
@@ -128,14 +128,14 @@ const Account: NextPage<AccountProps> = (props) => {
                             name="email-address"
                             id="email-address"
                             autoComplete="email"
-                            className="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                            className="form-input mt-1 block w-full border border-zinc-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-zinc-900 focus:border-zinc-900 sm:text-sm"
                           />
                         </div>
 
                         <div className="col-span-4 sm:col-span-1">
                           <label
                             htmlFor="expiration-date"
-                            className="block text-sm font-medium text-gray-700"
+                            className="block text-sm font-medium text-zinc-700"
                           >
                             Expration date
                           </label>
@@ -144,7 +144,7 @@ const Account: NextPage<AccountProps> = (props) => {
                             name="expiration-date"
                             id="expiration-date"
                             autoComplete="cc-exp"
-                            className="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                            className="form-input mt-1 block w-full border border-zinc-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-zinc-900 focus:border-zinc-900 sm:text-sm"
                             placeholder="MM / YY"
                           />
                         </div>
@@ -152,11 +152,11 @@ const Account: NextPage<AccountProps> = (props) => {
                         <div className="col-span-4 sm:col-span-1">
                           <label
                             htmlFor="security-code"
-                            className="flex items-center text-sm font-medium text-gray-700"
+                            className="flex items-center text-sm font-medium text-zinc-700"
                           >
                             <span>Security code</span>
                             <QuestionMarkCircleIcon
-                              className="ml-1 flex-shrink-0 h-5 w-5 text-gray-300"
+                              className="ml-1 flex-shrink-0 h-5 w-5 text-zinc-300"
                               aria-hidden="true"
                             />
                           </label>
@@ -165,14 +165,14 @@ const Account: NextPage<AccountProps> = (props) => {
                             name="security-code"
                             id="security-code"
                             autoComplete="cc-csc"
-                            className="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                            className="form-input mt-1 block w-full border border-zinc-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-zinc-900 focus:border-zinc-900 sm:text-sm"
                           />
                         </div>
 
                         <div className="col-span-4 sm:col-span-2">
                           <label
                             htmlFor="country"
-                            className="block text-sm font-medium text-gray-700"
+                            className="block text-sm font-medium text-zinc-700"
                           >
                             Country
                           </label>
@@ -180,7 +180,7 @@ const Account: NextPage<AccountProps> = (props) => {
                             id="country"
                             name="country"
                             autoComplete="country-name"
-                            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                            className="mt-1 block w-full bg-white border border-zinc-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-zinc-900 focus:border-zinc-900 sm:text-sm"
                           >
                             <option>United States</option>
                             <option>Canada</option>
@@ -191,7 +191,7 @@ const Account: NextPage<AccountProps> = (props) => {
                         <div className="col-span-4 sm:col-span-2">
                           <label
                             htmlFor="postal-code"
-                            className="block text-sm font-medium text-gray-700"
+                            className="block text-sm font-medium text-zinc-700"
                           >
                             ZIP / Postal code
                           </label>
@@ -200,15 +200,15 @@ const Account: NextPage<AccountProps> = (props) => {
                             name="postal-code"
                             id="postal-code"
                             autoComplete="postal-code"
-                            className="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                            className="form-input mt-1 block w-full border border-zinc-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-zinc-900 focus:border-zinc-900 sm:text-sm"
                           />
                         </div>
                       </div>
                     </div>
-                    <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                    <div className="px-4 py-3 bg-zinc-50 text-right sm:px-6">
                       <button
                         type="submit"
-                        className="bg-gray-800 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                        className="bg-zinc-800 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900"
                       >
                         Save
                       </button>

@@ -7,6 +7,7 @@ import { useLogs } from "@hooks/swr";
 import { useSWRConfig } from "swr";
 import { Table, Modal } from "@components/index";
 import { User } from "firebase/auth";
+import { PageProps } from "@customTypes/global";
 type Log = {
   href: string;
   id: number;
@@ -23,11 +24,8 @@ const getInterval = (data: { logs: Log[] }) => {
     return 6000;
   return 0;
 };
-interface HistoryProps {
-  idToken: string;
-  user: User;
-}
-const History: NextPage<HistoryProps> = (props) => {
+
+const History: NextPage<PageProps> = (props) => {
   const { mutate } = useSWRConfig();
   const [spin, setSpin] = useState(false);
   const [open, setOpen] = useState(false);
@@ -61,8 +59,8 @@ const History: NextPage<HistoryProps> = (props) => {
   };
   return (
     <div className="space-y-4 p-5 h-full sm:w-full  overflow-y-auto overflow-x-hidden flex flex-col w-screen">
-      <div className="pb-5  border-b border-gray-200 dark:border-zinc-700 dark:border-none items-center flex justify-between w-full">
-        <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-zinc-100">
+      <div className="pb-5  border-b border-zinc-200 dark:border-zinc-700 dark:border-none items-center flex justify-between w-full">
+        <h3 className="text-lg leading-6 font-medium text-zinc-900 dark:text-zinc-100">
           History
         </h3>
         <div className="mt-3 flex sm:mt-0 sm:ml-4 space-x-3">
@@ -75,11 +73,11 @@ const History: NextPage<HistoryProps> = (props) => {
               mutate(["/api/user/usage"]);
               mutate([`/api/user/logs?limit=${batchSize}&page=${active}`]);
             }}
-            className="inline-flex items-center p-2 border border-gray-300 dark:border-zinc-800 dark:bg-black rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 dark:hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:ring-offset-zinc-800 "
+            className="inline-flex items-center p-2 border border-zinc-300 dark:border-zinc-800 dark:bg-black rounded-md shadow-sm text-sm font-medium text-zinc-700 bg-white hover:bg-zinc-50 dark:hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:ring-offset-zinc-800 "
           >
             <RefreshIcon
               className={clsx(
-                "h-6 text-gray-400 dark:text-zinc-300  ",
+                "h-6 text-zinc-400 dark:text-zinc-300  ",
                 spin && "animate-spin-slow"
               )}
             />
@@ -109,7 +107,12 @@ const History: NextPage<HistoryProps> = (props) => {
         batchSize={10}
       />
 
-      <Modal open={open} setOpen={setOpen} content={modalContent} />
+      <Modal
+        dark={props.preferences.theme === "dark"}
+        open={open}
+        setOpen={setOpen}
+        content={modalContent}
+      />
     </div>
   );
 };
@@ -124,43 +127,42 @@ interface PaginationProps {
 const Pagination = (props: PaginationProps) => {
   return (
     <div className="flex items-start sm:items-center sm:flex-row space-y-3 justify-between flex-col bg-white px-4 py-3 sm:px-6 dark:bg-black">
-    
-        <div className="flex w-full justify-between sm:hidden ">
-          <button
-            disabled={props.active === 1}
-            onClick={() => props.setActive(props.active - 1)}
-            className="relative inline-flex items-center rounded-md border border-gray-300 bg-white dark:bg-black dark:border-zinc-900 dark:text-zinc-200 px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:hover:bg-zinc-900"
-          >
-            Previous
-          </button>
+      <div className="flex w-full justify-between sm:hidden ">
+        <button
+          disabled={props.active === 1}
+          onClick={() => props.setActive(props.active - 1)}
+          className="relative inline-flex items-center rounded-md border border-zinc-300 bg-white dark:bg-black dark:border-zinc-900 dark:text-zinc-200 px-4 py-2 text-sm font-medium text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900"
+        >
+          Previous
+        </button>
 
-          <button
-            disabled={props.active === props.pages}
-            onClick={() => props.setActive(props.active + 1)}
-            className="relative inline-flex items-center rounded-md border border-gray-300 bg-white dark:bg-black dark:border-zinc-900 dark:text-zinc-200 px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:hover:bg-zinc-900"
-          >
-            Next
-          </button>
-        </div>
-        <div  className="sm:hidden">
-          <p className="text-sm text-gray-700 dark:text-zinc-100">
-            Showing{" "}
-            <span className="font-medium">
-              {1 + (props.active - 1) * props.batchSize}
-            </span>{" "}
-            to{" "}
-            <span className="font-medium">
-              {props.active * props.batchSize > props.size
-                ? props.size
-                : props.active * props.batchSize}
-            </span>{" "}
-            of <span className="font-medium">{props.size}</span> results
-          </p>
-        </div>
-      
+        <button
+          disabled={props.active === props.pages}
+          onClick={() => props.setActive(props.active + 1)}
+          className="relative inline-flex items-center rounded-md border border-zinc-300 bg-white dark:bg-black dark:border-zinc-900 dark:text-zinc-200 px-4 py-2 text-sm font-medium text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900"
+        >
+          Next
+        </button>
+      </div>
+      <div className="sm:hidden">
+        <p className="text-sm text-zinc-700 dark:text-zinc-100">
+          Showing{" "}
+          <span className="font-medium">
+            {1 + (props.active - 1) * props.batchSize}
+          </span>{" "}
+          to{" "}
+          <span className="font-medium">
+            {props.active * props.batchSize > props.size
+              ? props.size
+              : props.active * props.batchSize}
+          </span>{" "}
+          of <span className="font-medium">{props.size}</span> results
+        </p>
+      </div>
+
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm text-gray-700 dark:text-zinc-100">
+          <p className="text-sm text-zinc-700 dark:text-zinc-100">
             Showing{" "}
             <span className="font-medium">
               {1 + (props.active - 1) * props.batchSize}
@@ -182,7 +184,7 @@ const Pagination = (props: PaginationProps) => {
             <button
               disabled={props.active === 1}
               onClick={() => props.setActive(props.active - 1)}
-              className="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white dark:bg-black dark:border-zinc-900 dark:text-zinc-200 px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:hover:bg-zinc-900 "
+              className="relative inline-flex items-center rounded-l-md border border-zinc-300 bg-white dark:bg-black dark:border-zinc-900 dark:text-zinc-200 px-2 py-2 text-sm font-medium text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 "
             >
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
@@ -195,13 +197,13 @@ const Pagination = (props: PaginationProps) => {
                       className={
                         props.active === 1
                           ? " relative z-10 inline-flex items-center border border-blue-500 dark:bg-blue-900 dark:text-blue-200  bg-blue-50 px-4 py-2 text-sm font-medium text-blue-600"
-                          : "relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:hover:bg-zinc-900 dark:bg-black dark:border-zinc-900 dark:text-zinc-200"
+                          : "relative inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 dark:bg-black dark:border-zinc-900 dark:text-zinc-200"
                       }
                       onClick={() => props.setActive(1)}
                     >
                       {1}
                     </button>
-                    <span className="relative inline-flex items-center border border-gray-300 bg-white dark:bg-black dark:border-zinc-900 dark:text-zinc-200 px-4 py-2 text-sm font-medium text-gray-500 ">
+                    <span className="relative inline-flex items-center border border-zinc-300 bg-white dark:bg-black dark:border-zinc-900 dark:text-zinc-200 px-4 py-2 text-sm font-medium text-zinc-500 ">
                       ...
                     </span>
                   </>
@@ -219,7 +221,7 @@ const Pagination = (props: PaginationProps) => {
                         className={
                           props.active === item
                             ? " relative z-10 inline-flex items-center border border-blue-500 dark:bg-blue-900 dark:text-blue-200  bg-blue-50 px-4 py-2 text-sm font-medium text-blue-600"
-                            : "relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:hover:bg-zinc-900 dark:bg-black dark:border-zinc-900 dark:text-zinc-200"
+                            : "relative inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 dark:bg-black dark:border-zinc-900 dark:text-zinc-200"
                         }
                         id={`${ind}`}
                         onClick={() => props.setActive(item)}
@@ -230,14 +232,14 @@ const Pagination = (props: PaginationProps) => {
                   })}
                 {Math.floor(props.pages / 5) >= props.active / 5 && (
                   <>
-                    <span className="relative inline-flex items-center border border-gray-300 bg-white dark:bg-black dark:border-zinc-900 dark:text-zinc-200 px-4 py-2 text-sm font-medium text-gray-500">
+                    <span className="relative inline-flex items-center border border-zinc-300 bg-white dark:bg-black dark:border-zinc-900 dark:text-zinc-200 px-4 py-2 text-sm font-medium text-zinc-500">
                       ...
                     </span>
                     <button
                       className={
                         props.active === props.pages
                           ? " relative z-10 inline-flex items-center border border-blue-500 dark:bg-blue-900 dark:text-blue-200  bg-blue-50 px-4 py-2 text-sm font-medium text-blue-600"
-                          : "relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:hover:bg-zinc-900 dark:bg-black dark:border-zinc-900 dark:text-zinc-200"
+                          : "relative inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 dark:bg-black dark:border-zinc-900 dark:text-zinc-200"
                       }
                       onClick={() => props.setActive(props.pages)}
                     >
@@ -254,7 +256,7 @@ const Pagination = (props: PaginationProps) => {
                     className={
                       props.active === ind + 1
                         ? " relative z-10 inline-flex items-center border border-blue-500 dark:bg-blue-900 dark:text-blue-200  bg-blue-50 px-4 py-2 text-sm font-medium text-blue-600"
-                        : "relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:hover:bg-zinc-900 dark:bg-black dark:border-zinc-900 dark:text-zinc-200"
+                        : "relative inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 dark:bg-black dark:border-zinc-900 dark:text-zinc-200"
                     }
                     id={`${ind}`}
                     onClick={() => props.setActive(++ind)}
@@ -268,7 +270,7 @@ const Pagination = (props: PaginationProps) => {
             <button
               disabled={props.active === props.pages}
               onClick={() => props.setActive(props.active + 1)}
-              className="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white dark:bg-black dark:border-zinc-900 dark:text-zinc-200 px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:hover:bg-zinc-900 cursor-pointer"
+              className="relative inline-flex items-center rounded-r-md border border-zinc-300 bg-white dark:bg-black dark:border-zinc-900 dark:text-zinc-200 px-2 py-2 text-sm font-medium text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 cursor-pointer"
             >
               <span className="sr-only">Next</span>
               <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />

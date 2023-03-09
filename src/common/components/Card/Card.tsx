@@ -29,10 +29,10 @@ export default function Card({
   }
 
   return (
-    <div className="rounded-2xl   p-6  shadow-gray-100 dark:shadow-gray-900  flex justify-between items-center shadow-lg border-gray-100 dark:border-gray-900 dark:bg-gray-800 border">
+    <div className="rounded-2xl   p-6  shadow-zinc-100 dark:shadow-zinc-900  flex justify-between items-center shadow-lg border-zinc-100 dark:border-zinc-900 dark:bg-zinc-800 border">
       <div className="space-y-3 flex flex-col">
         <span className="space-y-3">
-          <h1 className=" font-semibold text-left text dark:text-gray-100 ">
+          <h1 className=" font-semibold text-left text dark:text-zinc-100 ">
             {title}
           </h1>
           <div className="flex space-x-2 items-center">
@@ -41,13 +41,13 @@ export default function Card({
             ) : (
               <TrendingUpIcon className="  h-6 w-6 bg-green-100 dark:bg-lime-600 dark:bg-opacity-25 dark:text-green-500 text-green-500 rounded-full p-1" />
             )}
-            <span className=" font-semibold text-sm  dark:text-gray-100">
+            <span className=" font-semibold text-sm  dark:text-zinc-100">
               {(change > 0 ? "+" : "") + change.toFixed(1)}%
             </span>
           </div>
         </span>
 
-        <h1 className="text-left text-4xl  font-bold dark:text-gray-100">
+        <h1 className="text-left text-4xl  font-bold dark:text-zinc-100">
           <Value />
         </h1>
       </div>

@@ -77,7 +77,7 @@ export default function Notifications() {
           </span>
 
           <BellIcon
-            className="h-7 w-7 text-gray-700 hover:text-gray-800 dark:text-zinc-300 dark:hover:text-zinc-400"
+            className="h-7 w-7 text-zinc-700 hover:text-zinc-800 dark:text-zinc-300 dark:hover:text-zinc-400"
             aria-hidden="true"
           />
         </Menu.Button>
@@ -98,7 +98,7 @@ export default function Notifications() {
                 <div className=" flex items-center justify-between border-b dark:border-zinc-700 px-4 py-2 font-semibold transition-colors ">
                   <div className="flex flex-col dark:text-zinc-50  ">
                     Notifications
-                    <span className="text-sm font-normal text-gray-500 dark:text-zinc-400">
+                    <span className="text-sm font-normal text-zinc-500 dark:text-zinc-400">
                       {isLoading
                         ? "loading.."
                         : `You have ${unread.length} unread messages`}
@@ -111,7 +111,7 @@ export default function Notifications() {
             <Menu.Item>
               {({ active }) => (
                 <div className="block   text-sm transition-colors">
-                  <h1 className="px-3 py-1 text-sm font-semibold text-gray-500 dark:text-zinc-400">
+                  <h1 className="px-3 py-1 text-sm font-semibold text-zinc-500 dark:text-zinc-400">
                     NEW
                   </h1>
                   {!isLoading &&
@@ -119,7 +119,7 @@ export default function Notifications() {
                       return (
                         <div
                           key={index}
-                          className="flex cursor-pointer items-center space-x-3 bg-blue-50 dark:bg-zinc-700 p-3 hover:bg-gray-100 dark:hover:bg-zinc-600 "
+                          className="flex cursor-pointer items-center space-x-3 bg-blue-50 dark:bg-zinc-700 p-3 hover:bg-zinc-100 dark:hover:bg-zinc-600 "
                         >
                           <MailIcon
                             className="h-10 w-10 flex-shrink-0 rounded-full  text-blue-500 transition-colors"
@@ -129,11 +129,11 @@ export default function Notifications() {
                             <h1 className="font-semibold dark:text-zinc-100 ">
                               {item.message}
                             </h1>
-                            <p className="font-normal text-gray-500 dark:text-zinc-400 ">
+                            <p className="font-normal text-zinc-500 dark:text-zinc-400 ">
                               {item.submessage}
                             </p>
-                            <h1 className="flex items-center text-xs text-gray-400">
-                              <ClockIcon className="mr-1 h-3 w-3 text-gray-400" />{" "}
+                            <h1 className="flex items-center text-xs text-zinc-400">
+                              <ClockIcon className="mr-1 h-3 w-3 text-zinc-400" />{" "}
                               {findTime(item.timestamp / 1000)}
                             </h1>
                           </div>
@@ -148,14 +148,14 @@ export default function Notifications() {
             <Menu.Item>
               {({ active }) => (
                 <div className="block   text-sm transition-colors">
-                  <h1 className="px-3 py-1 text-sm font-semibold text-gray-500 dark:text-zinc-400">
+                  <h1 className="px-3 py-1 text-sm font-semibold text-zinc-500 dark:text-zinc-400">
                     RECENT
                   </h1>
                   {unread.map((item, index) => {
                     return (
                       <div
                         key={index}
-                        className="flex cursor-pointer items-start space-x-3 p-3 hover:bg-gray-100 dark:hover:bg-zinc-700 "
+                        className="flex cursor-pointer items-start space-x-3 p-3 hover:bg-zinc-100 dark:hover:bg-zinc-700 "
                       >
                         <item.icon
                           className="h-10 w-10 flex-shrink-0 rounded-full  text-blue-500 transition-colors"
@@ -165,11 +165,11 @@ export default function Notifications() {
                           <h1 className="font-semibold dark:text-zinc-100 ">
                             {item.message}
                           </h1>
-                          <p className="font-normal text-gray-500 dark:text-zinc-400 ">
+                          <p className="font-normal text-zinc-500 dark:text-zinc-400 ">
                             {item.submessage}
                           </p>
-                          <h1 className="flex items-center text-xs text-gray-400">
-                            <ClockIcon className="mr-1 h-3 w-3 text-gray-400" />
+                          <h1 className="flex items-center text-xs text-zinc-400">
+                            <ClockIcon className="mr-1 h-3 w-3 text-zinc-400" />
                             {findTime(item.timestamp)}
                           </h1>
                         </div>
@@ -188,7 +188,7 @@ export default function Notifications() {
                     e.preventDefault();
                   }}
                   className={clsx(
-                    active ? "bg-gray-100 dark:bg-zinc-700" : "",
+                    active ? "bg-zinc-100 dark:bg-zinc-700" : "",
                     "block cursor-pointer rounded-b-lg border-t dark:border-zinc-700 px-4 py-2 text-center text-sm transition-colors dark:text-blue-500"
                   )}
                 >

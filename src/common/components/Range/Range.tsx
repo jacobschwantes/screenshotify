@@ -75,7 +75,7 @@ const Range: NextComponentType<NextPageContext, {}, RangeProps> = ({
             type="number"
             name="number-input"
             id="number-input"
-            className="form-input shadow-sm focus:ring-blue-600 focus:border-blue-600 block max-w-[75px] sm:text-sm border-gray-300 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 rounded-md py-1.5"
+            className="form-input shadow-sm focus:ring-blue-600 focus:border-blue-600 block max-w-[75px] sm:text-sm border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 rounded-md py-1.5"
           />
         </div>
       )}
