@@ -1,17 +1,12 @@
+import { usePrefersDark } from "@hooks/theme";
 import clsx from "clsx";
 import { NextPage } from "next";
-import { useEffect, useState } from "react";
-
 interface ThemeProps {
   children: React.ReactNode;
   theme: "light" | "dark" | "system";
 }
 const ThemeProvider: NextPage<ThemeProps> = ({ children, theme }) => {
-  const [prefersDark, setPrefersDark] = useState(true);
-  useEffect(() => {
-    window.matchMedia("(prefers-color-scheme: dark)").matches &&
-      setPrefersDark(true);
-  }, []);
+  const prefersDark = usePrefersDark();
   return (
     <div
       className={clsx(
@@ -22,5 +17,4 @@ const ThemeProvider: NextPage<ThemeProps> = ({ children, theme }) => {
     </div>
   );
 };
-
 export default ThemeProvider;

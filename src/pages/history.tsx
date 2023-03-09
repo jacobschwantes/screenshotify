@@ -8,6 +8,7 @@ import { useSWRConfig } from "swr";
 import { Table, Modal } from "@components/index";
 import { User } from "firebase/auth";
 import { PageProps } from "@customTypes/global";
+import { usePrefersDark } from "@hooks/theme";
 type Log = {
   href: string;
   id: number;
@@ -39,6 +40,7 @@ const History: NextPage<PageProps> = (props) => {
     `?limit=${batchSize}&page=${active}`,
     { refreshInterval: (data) => getInterval(data) }
   );
+  const prefersDark = usePrefersDark();
 
   useEffect(() => {
     if (logs?.entries) {
@@ -108,7 +110,7 @@ const History: NextPage<PageProps> = (props) => {
       />
 
       <Modal
-        dark={props.preferences.theme === "dark"}
+        dark={props.preferences.theme === "dark" || props.preferences.theme === "system" && prefersDark}
         open={open}
         setOpen={setOpen}
         content={modalContent}

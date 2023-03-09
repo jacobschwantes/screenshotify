@@ -24,6 +24,7 @@ import { useSWRConfig } from "swr";
 import { RadioGroup } from "@headlessui/react";
 import { User } from "firebase/auth";
 import { ApiKey, PageProps } from "@customTypes/global";
+import { usePrefersDark } from "@hooks/theme";
 
 const Tokens: NextPage<PageProps> = (props) => {
   const { mutate } = useSWRConfig();
@@ -36,6 +37,7 @@ const Tokens: NextPage<PageProps> = (props) => {
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
   const { token, isTokenLoading, isTokenError } = useToken(idToken, selected);
+  const prefersDark = usePrefersDark();
   useEffect(() => {
     let timer1 = setTimeout(() => setCopiedId(""), 6000);
     return () => {
@@ -309,7 +311,7 @@ const Tokens: NextPage<PageProps> = (props) => {
           {isTokenError && <div>Error: {isError.message}</div>}
           {token?.key && !isTokenLoading && (
             <TokenPage
-              theme={props.preferences.theme}
+              dark={props.preferences.theme === 'dark' || props.preferences.theme === 'system' && prefersDark}
               setSelectedToken={setSelected}
               open={open}
               setOpen={setOpen}
@@ -343,7 +345,7 @@ interface TokenPageProps {
   open: boolean;
   setOpen: (setting: boolean) => void;
   setSelectedToken: (token: string) => void;
-  theme: string;
+  dark: boolean;
 }
 
 const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
@@ -353,7 +355,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
   open,
   setOpen,
   setSelectedToken,
-  theme
+  dark
 }) => {
   const [tokenOptions, setTokenOptions] = useState(token);
   const [updateLoading, setUpdateLoading] = useState(false);
@@ -382,7 +384,7 @@ const TokenPage: NextComponentType<NextPageContext, {}, TokenPageProps> = ({
       <Dialog
         as="div"
         
-        className={clsx( (theme === "dark" ? "dark" : ""),"relative z-10  ")}
+        className={clsx( (dark ? "dark" : ""),"relative z-10  ")}
         initialFocus={cancelButtonRef}
         onClose={() => {
           setOpen(false);
