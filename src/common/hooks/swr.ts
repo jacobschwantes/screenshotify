@@ -65,7 +65,7 @@ export const usePreferences = (token: string | null) => {
     fetcher
   );
   return {
-    data,
+    preferences: data,
     isLoading: !error && !data,
     isError: error,
   };

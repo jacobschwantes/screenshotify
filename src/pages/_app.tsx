@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [user, loading, error] = useAuthState(auth);
   const [sendingEmail, setSendingEmail] = useState(false);
   const token = useIdToken();
-  const { data, isLoading, isError } = usePreferences(token);
+  const { preferences, isLoading, isError } = usePreferences(token);
   const router = useRouter();
   useEffect(() => {
     router.events.on("routeChangeStart", progress.start);
@@ -84,18 +84,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       </ThemeProvider>
     );
   }
-  if (router.asPath.includes("editor")) {
+  if (user?.emailVerified && !error && preferences) {
     return (
-      <ThemeProvider theme={data?.preferences?.theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    );
-  }
-  if (user?.emailVerified && !error && data) {
-    return (
-      <ThemeProvider theme={data?.preferences?.theme}>
+      <ThemeProvider theme={preferences?.preferences?.theme}>
         <AppLayout>
-          <Component user={user} idToken={token} {...pageProps} />
+          <Component user={user} idToken={token} {...pageProps} preferences={preferences.preferences} />
         </AppLayout>
       </ThemeProvider>
     );
@@ -120,7 +113,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     );
   } else if (user && !user?.emailVerified) {
     return (
-      <ThemeProvider theme={data?.preferences?.theme}>
+      <ThemeProvider theme={preferences?.preferences?.theme}>
         <div className="flex h-screen w-screen items-center justify-center dark:bg-black  ">
           <ToastContainer
             position="bottom-right"
@@ -137,7 +130,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           />
           <div className="border border-zinc-900 rounded-2xl p-10 max-w-lg w-full space-y-14">
             <div className="flex justify-between items-center">
-              <h1 className="text-gray-100 text-3xl font-medium">
+              <h1 className="text-zinc-100 text-3xl font-medium">
                 screenshotify
               </h1>
               <Tooltip label="logout">
@@ -147,7 +140,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               </Tooltip>
             </div>
             <div className=" space-y-4">
-              <h1 className="text-gray-100 text-3xl font-bold">
+              <h1 className="text-zinc-100 text-3xl font-bold">
                 Verify your email
               </h1>
               <p className="text-zinc-400 font-medium text-sm">
@@ -165,7 +158,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               </button>
               <a
                 href="mailto:support@screenshotify.io"
-                className=" hover:bg-gray-900 hover:bg-opacity-30 w-full border border-zinc-800 p-4 rounded-lg font-medium tracking-wide text-gray-100 flex items-center justify-center"
+                className=" hover:bg-zinc-900 hover:bg-opacity-30 w-full border border-zinc-800 p-4 rounded-lg font-medium tracking-wide text-zinc-100 flex items-center justify-center"
               >
                 Contact Support
               </a>

@@ -1,3 +1,5 @@
+import { User } from "firebase/auth";
+
 export type ApiKey = {
   locked: boolean;
   name: string;
@@ -28,3 +30,9 @@ export type UserConfig = {
   plan: string;
   preferences: Preferences;
 };
+
+export type PageProps = {
+  user: User;
+  idToken: string;
+  preferences: Preferences;
+}
