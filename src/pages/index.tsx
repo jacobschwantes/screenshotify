@@ -15,11 +15,13 @@ import { DateTime } from "luxon";
 import { User } from "firebase/auth";
 import { NextComponentType, NextPageContext } from "next";
 import { PageProps } from "@customTypes/global";
+import { usePrefersDark } from "@hooks/theme";
 
 const Dashboard: NextPage<PageProps> = (props) => {
   const { mutate } = useSWRConfig();
   const [idToken, setIdToken] = useState(props.idToken);
   const [spin, setSpin] = useState(false);
+  const prefersDark = usePrefersDark();
   const { usage, isLoading, isError } = useUsage(
     idToken,
     DateTime.now().zoneName.replace("/", "-")
@@ -102,7 +104,7 @@ const Dashboard: NextPage<PageProps> = (props) => {
               ? usage?.data.chartData.usage7day
               : usage?.data.chartData.usage30day
           }
-          dark={props.preferences.theme === 'dark'}
+          dark={props.preferences.theme === 'dark' || props.preferences.theme === 'system' && prefersDark}
         />
       }
     </div>
