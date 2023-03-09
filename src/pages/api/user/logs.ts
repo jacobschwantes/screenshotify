@@ -49,9 +49,7 @@ async function handler(req: ApiRequest, res: NextApiResponse<Data>) {
       snapshot.forEach((doc) => {
         logs.push(doc.data());
       });
-      res
-        .status(200)
-        .json({ message: "found logs", logs, entries: logCount });
+      res.status(200).json({ message: "found logs", logs, entries: logCount });
     }
   } else {
     res.status(500).json({ message: "invalid options" });

@@ -10,7 +10,11 @@ interface ModalProps {
 export default function Modal({ setOpen, open, content, dark }: ModalProps) {
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className={clsx("relative z-10", dark ? "dark" : "")} onClose={setOpen}>
+      <Dialog
+        as="div"
+        className={clsx("relative z-10", dark ? "dark" : "")}
+        onClose={setOpen}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -20,11 +24,11 @@ export default function Modal({ setOpen, open, content, dark }: ModalProps) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-zinc-800 backdrop-blur-sm bg-opacity-30 transition-opacity" />
+          <div className="fixed inset-0 bg-zinc-800 bg-opacity-30 backdrop-blur-sm transition-opacity" />
         </Transition.Child>
 
-        <div className="fixed z-10 inset-0 overflow-y-auto">
-          <div className="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+        <div className="fixed inset-0 z-10 overflow-y-auto">
+          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -34,11 +38,13 @@ export default function Modal({ setOpen, open, content, dark }: ModalProps) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative dark:bg-black bg-white border dark:border-zinc-900 border-zinc-300 rounded-2xl px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-5xl sm:w-full sm:p-6">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-2xl border border-zinc-300 bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all dark:border-zinc-900 dark:bg-black sm:my-8 sm:w-full sm:max-w-5xl sm:p-6">
                 <div className="space-y-4">
-                  <h1 className="font-medium dark:text-white text-lg">Error logs</h1>
+                  <h1 className="text-lg font-medium dark:text-white">
+                    Error logs
+                  </h1>
                   <div>
-                    <code className="dark:text-zinc-200 text-sm break-words">
+                    <code className="break-words text-sm dark:text-zinc-200">
                       {content.message}
                     </code>
                   </div>
@@ -46,7 +52,7 @@ export default function Modal({ setOpen, open, content, dark }: ModalProps) {
                   <div className="flex justify-end">
                     <button
                       type="button"
-                      className="inline-flex items-center px-4 py-2 border border-zinc-900 rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-zinc-900"
+                      className="inline-flex items-center rounded-md border border-zinc-900 bg-black px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-zinc-900"
                       onClick={() => {
                         setOpen(false);
                       }}

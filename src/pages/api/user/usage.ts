@@ -135,7 +135,9 @@ async function handler(req: ApiRequest, res: NextApiResponse<ResData>) {
   const userRef = firestore.collection("users").doc(req.uid);
   const doc = await userRef.get();
   const zone =
-    typeof req.query.zone === "string" ? req.query.zone.replace("-", "/") : undefined;
+    typeof req.query.zone === "string"
+      ? req.query.zone.replace("-", "/")
+      : undefined;
 
   if (!doc.exists || !zone) {
     res.status(404).json({ message: "user does not exist" });

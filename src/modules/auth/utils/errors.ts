@@ -18,8 +18,7 @@ const codeDictionary = {
   "auth/email-already-in-use": {
     toDev:
       "The provided email is already in use by an existing user. Each user must have a unique email.",
-    toClient:
-      "An account for this email already exists.",
+    toClient: "An account for this email already exists.",
   },
   "auth/id-token-expired": {
     toDev: "The provided Firebase ID token is expired.",

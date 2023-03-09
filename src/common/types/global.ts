@@ -35,4 +35,4 @@ export type PageProps = {
   user: User;
   idToken: string;
   preferences: Preferences;
-}
+};

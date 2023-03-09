@@ -56,27 +56,27 @@ export default function Header() {
   return (
     <Disclosure
       as="nav"
-      className="bg-white shadow-sm z-30 dark:bg-black dark:border-b dark:border-zinc-900"
+      className="z-30 bg-white shadow-sm dark:border-b dark:border-zinc-900 dark:bg-black"
     >
       {({ open, close }) => (
         <>
           <div className=" px-2 sm:px-6 lg:px-6 ">
-            <div className="flex items-center justify-between h-16">
+            <div className="flex h-16 items-center justify-between">
               <div className="flex items-center justify-between sm:flex-1 ">
                 <Link href="/">
                   <span className="flex items-end justify-center space-x-2 dark:text-white  ">
                     <Image
-                      className=" h-7 hidden dark:sm:block w-auto  "
+                      className=" hidden h-7 w-auto dark:sm:block  "
                       src={logo}
                       alt="logo"
                     />
                     <Image
-                      className=" h-7 hidden sm:block w-auto dark:hidden  "
+                      className=" hidden h-7 w-auto dark:hidden sm:block  "
                       src={logo_light}
                       alt="logo"
                     />
                     <Image
-                      className="h-8  sm:hidden w-auto"
+                      className="h-8  w-auto sm:hidden"
                       src={logo_short}
                       alt="logo"
                     />
@@ -91,7 +91,7 @@ export default function Header() {
               </div>
               <div className="flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-black dark:text-white hover:text-white hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-zinc-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600 dark:text-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -103,8 +103,8 @@ export default function Header() {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden absolute z-10 dark:bg-black bg-white w-screen">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <Disclosure.Panel className="absolute z-10 w-screen bg-white dark:bg-black sm:hidden">
+            <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map((item, index) => (
                 <Link key={index} href={item.href}>
                   <button
@@ -112,9 +112,9 @@ export default function Header() {
                     key={item.name}
                     className={clsx(
                       item.current
-                        ? "bg-blue-200 text-blue-600 dark:bg-blue-900 dark:text-blue-600 dark:bg-opacity-30   "
-                        : "dark:text-zinc-300 text-zinc-500 ",
-                      " flex items-center  p-3 rounded-lg border border-transparent text-center transition-all  hover:bg-zinc-100 dark:hover:bg-zinc-900 dark:bg-opacity-50 w-full space-x-2"
+                        ? "bg-blue-200 text-blue-600 dark:bg-blue-900 dark:bg-opacity-30 dark:text-blue-600   "
+                        : "text-zinc-500 dark:text-zinc-300 ",
+                      " flex w-full  items-center space-x-2 rounded-lg border border-transparent p-3  text-center transition-all hover:bg-zinc-100 dark:bg-opacity-50 dark:hover:bg-zinc-900"
                     )}
                   >
                     <item.icon
@@ -123,7 +123,9 @@ export default function Header() {
                     />
                     <span
                       className={clsx(
-                        item.current ? "text-blue-600" : "dark:text-white text-zinc-600"
+                        item.current
+                          ? "text-blue-600"
+                          : "text-zinc-600 dark:text-white"
                       )}
                     >
                       {item.name}
@@ -134,7 +136,7 @@ export default function Header() {
               <div className="flex w-full space-x-3 p-2">
                 <Disclosure.Button
                   onClick={() => signOut(auth)}
-                  className="block text-center w-full  rounded-md border border-transparent px-3 py-1.5  bg-blue-600 text-sm font-medium text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-300"
+                  className="block w-full rounded-md  border border-transparent bg-blue-600 px-3 py-1.5  text-center text-sm font-medium text-white shadow transition-colors duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 >
                   Log out
                 </Disclosure.Button>

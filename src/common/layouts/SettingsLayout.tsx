@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { ReactNode } from "react";
 
 interface SettingsLayoutProps {
-  children: ReactNode
+  children: ReactNode;
 }
 const SettingsLayout: NextPage<SettingsLayoutProps> = ({ children }) => {
   const router = useRouter();
@@ -37,12 +37,12 @@ const SettingsLayout: NextPage<SettingsLayoutProps> = ({ children }) => {
 
   return (
     <div className="space-y-4 ">
-       <div className="pb-5 dark:pb-0 border-b border-zinc-200 dark:border-zinc-700 dark:border-none sm:flex sm:items-center sm:justify-between w-full">
-        <h3 className="text-lg leading-6 font-medium text-zinc-900 dark:text-zinc-100">
+      <div className="w-full border-b border-zinc-200 pb-5 dark:border-none dark:border-zinc-700 dark:pb-0 sm:flex sm:items-center sm:justify-between">
+        <h3 className="text-lg font-medium leading-6 text-zinc-900 dark:text-zinc-100">
           Settings
         </h3>
       </div>
-      <div className="flex space-x-2 rounded-xl bg-zinc-100 dark:bg-black dark:border dark:border-zinc-900 p-1 max-w-4xl ">
+      <div className="flex max-w-4xl space-x-2 rounded-xl bg-zinc-100 p-1 dark:border dark:border-zinc-900 dark:bg-black ">
         {tabs.map((tab) => {
           return (
             <Link key={tab.name} href={tab.href}>
@@ -52,8 +52,8 @@ const SettingsLayout: NextPage<SettingsLayoutProps> = ({ children }) => {
                   "flex w-full items-center justify-center rounded-lg py-2.5 text-center text-sm font-medium capitalize leading-5 ",
                   "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2 dark:ring-transparent",
                   tab.current
-                    ? "bg-white text-blue-700 dark:text-blue-500 shadow dark:bg-zinc-900"
-                    : "text-zinc-700 hover:bg-white/[0.12] hover:text-zinc-600 dark:hover:text-zinc-200 dark:text-zinc-300"
+                    ? "bg-white text-blue-700 shadow dark:bg-zinc-900 dark:text-blue-500"
+                    : "text-zinc-700 hover:bg-white/[0.12] hover:text-zinc-600 dark:text-zinc-300 dark:hover:text-zinc-200"
                 )}
               >
                 <h1 className="hidden sm:block">{tab.name}</h1>
@@ -67,7 +67,4 @@ const SettingsLayout: NextPage<SettingsLayoutProps> = ({ children }) => {
     </div>
   );
 };
-export default SettingsLayout
-
-
-
+export default SettingsLayout;

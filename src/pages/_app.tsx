@@ -88,7 +88,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
       <ThemeProvider theme={preferences?.preferences?.theme}>
         <AppLayout>
-          <Component user={user} idToken={token} {...pageProps} preferences={preferences.preferences} />
+          <Component
+            user={user}
+            idToken={token}
+            {...pageProps}
+            preferences={preferences.preferences}
+          />
         </AppLayout>
       </ThemeProvider>
     );
@@ -128,9 +133,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             theme="colored"
             pauseOnHover
           />
-          <div className="border border-zinc-900 rounded-2xl p-10 max-w-lg w-full space-y-14">
-            <div className="flex justify-between items-center">
-              <h1 className="text-zinc-100 text-3xl font-medium">
+          <div className="w-full max-w-lg space-y-14 rounded-2xl border border-zinc-900 p-10">
+            <div className="flex items-center justify-between">
+              <h1 className="text-3xl font-medium text-zinc-100">
                 screenshotify
               </h1>
               <Tooltip label="logout">
@@ -140,10 +145,10 @@ function MyApp({ Component, pageProps }: AppProps) {
               </Tooltip>
             </div>
             <div className=" space-y-4">
-              <h1 className="text-zinc-100 text-3xl font-bold">
+              <h1 className="text-3xl font-bold text-zinc-100">
                 Verify your email
               </h1>
-              <p className="text-zinc-400 font-medium text-sm">
+              <p className="text-sm font-medium text-zinc-400">
                 An email has been sent to {user.email} with a link to verify
                 your account. If you have not recieved the email after a few
                 minutes, please check your spam folder.
@@ -152,13 +157,13 @@ function MyApp({ Component, pageProps }: AppProps) {
             <div className="space-y-3">
               <button
                 onClick={handleSendEmailVerification}
-                className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-zinc-100 flex items-center justify-center"
+                className="flex w-full items-center justify-center rounded-lg border border-blue-900 bg-blue-500 p-4 font-medium tracking-wide text-zinc-100 hover:bg-blue-400"
               >
                 Resend Email {sendingEmail && <Spinner className="h-5 w-5" />}
               </button>
               <a
                 href="mailto:support@screenshotify.io"
-                className=" hover:bg-zinc-900 hover:bg-opacity-30 w-full border border-zinc-800 p-4 rounded-lg font-medium tracking-wide text-zinc-100 flex items-center justify-center"
+                className=" flex w-full items-center justify-center rounded-lg border border-zinc-800 p-4 font-medium tracking-wide text-zinc-100 hover:bg-zinc-900 hover:bg-opacity-30"
               >
                 Contact Support
               </a>

@@ -20,7 +20,7 @@ const Toggle: NextComponentType<NextPageContext, {}, ToggleProps> = ({
         onChange={setEnabled}
         className={clsx(
           enabled ? "bg-blue-600" : "bg-zinc-200 dark:bg-zinc-800",
-          "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:ring-offset-zinc-900 focus:ring-blue-600"
+          "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 dark:ring-offset-zinc-900"
         )}
       >
         <span className="sr-only">Use setting</span>
@@ -28,7 +28,7 @@ const Toggle: NextComponentType<NextPageContext, {}, ToggleProps> = ({
           aria-hidden="true"
           className={clsx(
             enabled ? "translate-x-5" : "translate-x-0",
-            "pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+            "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
           )}
         />
       </Switch>

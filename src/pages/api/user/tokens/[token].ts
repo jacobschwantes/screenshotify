@@ -28,12 +28,12 @@ type Data = {
     userid: string;
   };
 };
-interface TokenOptions  {
+interface TokenOptions {
   name: string;
   quota: number;
   locked: boolean;
   quota_limit: string;
-};
+}
 const checkOptions = (options: TokenOptions) => {
   const schema = {
     name: (value: string) =>

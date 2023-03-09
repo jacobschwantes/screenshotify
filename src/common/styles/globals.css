@@ -121,7 +121,7 @@
     height: 15px; /* Slider handle height */
     border-radius: 100%;
     background: white;
-    border: 1px solid #c7c7c7; 
+    border: 1px solid #c7c7c7;
     cursor: pointer; /* Cursor on hover */
   }
   input[type="range"]::-webkit-slider-runnable-track {
@@ -131,11 +131,9 @@
     -webkit-appearance: none;
   }
   input[type="range"] {
-   
     background-repeat: no-repeat;
     -webkit-appearance: none;
   }
-
 }
 .toolbar-button-spaced > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;

@@ -121,9 +121,9 @@ export default function Page() {
   if (error) {
     return (
       <div className="flex h-screen w-screen items-center justify-center dark:bg-black  ">
-        <div className="border border-zinc-900 rounded-2xl p-10 max-w-lg w-full space-y-14">
-          <div className="flex justify-between items-center">
-            <h1 className="text-zinc-100 text-3xl font-medium">
+        <div className="w-full max-w-lg space-y-14 rounded-2xl border border-zinc-900 p-10">
+          <div className="flex items-center justify-between">
+            <h1 className="text-3xl font-medium text-zinc-100">
               screenshotify
             </h1>
             <Tooltip label="logout">
@@ -133,17 +133,17 @@ export default function Page() {
             </Tooltip>
           </div>
           <div className=" space-y-4">
-            <h1 className="text-zinc-100 text-3xl font-bold">Uh oh..</h1>
-            <p className="text-zinc-400 font-medium text-sm">{error}</p>
+            <h1 className="text-3xl font-bold text-zinc-100">Uh oh..</h1>
+            <p className="text-sm font-medium text-zinc-400">{error}</p>
           </div>
           <div className="space-y-3">
             <Link href="/">
-              <a className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-zinc-100 flex items-center justify-center">
+              <a className="flex w-full items-center justify-center rounded-lg border border-blue-900 bg-blue-500 p-4 font-medium tracking-wide text-zinc-100 hover:bg-blue-400">
                 Try again
               </a>
             </Link>
             <Link href="mailto:support@screenshotify.io">
-              <a className=" hover:bg-zinc-900 hover:bg-opacity-30 w-full border border-zinc-800 p-4 rounded-lg font-medium tracking-wide text-zinc-100 flex items-center justify-center">
+              <a className=" flex w-full items-center justify-center rounded-lg border border-zinc-800 p-4 font-medium tracking-wide text-zinc-100 hover:bg-zinc-900 hover:bg-opacity-30">
                 Contact Support
               </a>
             </Link>
@@ -155,18 +155,18 @@ export default function Page() {
   if (emailVerified) {
     return (
       <div className="flex h-screen w-screen items-center justify-center dark:bg-black  ">
-        <div className="border border-zinc-900 rounded-2xl p-10 max-w-lg w-full space-y-14">
-          <h1 className="text-zinc-100 text-3xl font-medium">screenshotify</h1>
+        <div className="w-full max-w-lg space-y-14 rounded-2xl border border-zinc-900 p-10">
+          <h1 className="text-3xl font-medium text-zinc-100">screenshotify</h1>
 
           <div className=" space-y-4">
-            <h1 className="text-zinc-100 text-3xl font-bold">Email verified</h1>
-            <p className="text-zinc-400 font-medium text-sm">
+            <h1 className="text-3xl font-bold text-zinc-100">Email verified</h1>
+            <p className="text-sm font-medium text-zinc-400">
               Your account is now activated and ready to use.
             </p>
           </div>
           <div className="space-y-3">
             <Link href="/">
-              <a className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-zinc-100 flex items-center justify-center">
+              <a className="flex w-full items-center justify-center rounded-lg border border-blue-900 bg-blue-500 p-4 font-medium tracking-wide text-zinc-100 hover:bg-blue-400">
                 Log in
               </a>
             </Link>
@@ -178,24 +178,24 @@ export default function Page() {
   if (passwordCodeVerified) {
     return (
       <div className="flex h-screen w-screen items-center justify-center dark:bg-black  ">
-        <div className="border border-zinc-900 rounded-2xl p-10 max-w-lg w-full space-y-5">
-          <h1 className="text-zinc-100 text-3xl font-medium mb-12">
+        <div className="w-full max-w-lg space-y-5 rounded-2xl border border-zinc-900 p-10">
+          <h1 className="mb-12 text-3xl font-medium text-zinc-100">
             screenshotify
           </h1>
           {success ? (
             <div className="flex flex-col space-y-14">
               <div className=" space-y-4">
-                <h1 className="text-zinc-100 text-3xl font-bold">
+                <h1 className="text-3xl font-bold text-zinc-100">
                   Password reset
                 </h1>
-                <p className="text-zinc-400 font-medium text-sm">
+                <p className="text-sm font-medium text-zinc-400">
                   Your password has been successfully reset.
                 </p>
               </div>
               <Link href="/">
                 <a
                   type="submit"
-                  className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-zinc-100 flex items-center justify-center"
+                  className="flex w-full items-center justify-center rounded-lg border border-blue-900 bg-blue-500 p-4 font-medium tracking-wide text-zinc-100 hover:bg-blue-400"
                 >
                   Sign in
                 </a>
@@ -256,12 +256,12 @@ const PasswordPage: NextComponentType<
         }}
         className="flex flex-col space-y-4"
       >
-        <h1 className="text-zinc-100 text-3xl font-bold">Reset password</h1>
+        <h1 className="text-3xl font-bold text-zinc-100">Reset password</h1>
         <div className="flex flex-col space-y-1">
-          <label htmlFor="email" className="text-zinc-100 font-medium text-sm">
+          <label htmlFor="email" className="text-sm font-medium text-zinc-100">
             Password
           </label>
-          <div className="w-full relative">
+          <div className="relative w-full">
             <input
               value={password}
               onChange={(e) => {
@@ -278,14 +278,14 @@ const PasswordPage: NextComponentType<
               spellCheck={false}
               type={showPassword ? "text" : "password"}
               className={
-                "form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-zinc-400 border-zinc-800 border " +
+                "form-input w-full rounded-lg border border-zinc-800 bg-black py-4 pr-10 pl-4 font-medium text-zinc-400 focus:outline-none " +
                 (passwordError ? "border-red-500" : "focus:border-blue-500")
               }
             ></input>
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="cursor-pointer absolute inset-y-0 right-0 pr-4 flex items-center"
+              className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-4"
             >
               {showPassword ? (
                 <EyeIcon className="h-5 text-zinc-400" />
@@ -294,13 +294,13 @@ const PasswordPage: NextComponentType<
               )}
             </button>
           </div>
-          <p className="text-red-500 font-medium text-sm">{passwordError}</p>
+          <p className="text-sm font-medium text-red-500">{passwordError}</p>
         </div>
         <div className="flex flex-col space-y-1 pb-5">
-          <label htmlFor="email" className="text-zinc-100 font-medium text-sm">
+          <label htmlFor="email" className="text-sm font-medium text-zinc-100">
             Confirm password
           </label>
-          <div className="w-full relative">
+          <div className="relative w-full">
             <input
               value={passwordConfirm}
               onChange={(e) => {
@@ -320,7 +320,7 @@ const PasswordPage: NextComponentType<
               spellCheck={false}
               type={showPassword ? "text" : "password"}
               className={
-                "form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-zinc-400 border-zinc-800 border " +
+                "form-input w-full rounded-lg border border-zinc-800 bg-black py-4 pr-10 pl-4 font-medium text-zinc-400 focus:outline-none " +
                 (passwordCheckError
                   ? "border-red-500"
                   : "focus:border-blue-500")
@@ -329,7 +329,7 @@ const PasswordPage: NextComponentType<
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="cursor-pointer absolute inset-y-0 right-0 pr-4 flex items-center"
+              className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-4"
             >
               {showPassword ? (
                 <EyeIcon className="h-5 text-zinc-400" />
@@ -338,21 +338,21 @@ const PasswordPage: NextComponentType<
               )}
             </button>
           </div>
-          <p className="text-red-500 font-medium text-sm">
+          <p className="text-sm font-medium text-red-500">
             {passwordCheckError}
           </p>
-          <p className="text-red-500 font-medium text-sm">{error}</p>
+          <p className="text-sm font-medium text-red-500">{error}</p>
         </div>
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-zinc-900 flex items-center justify-center"
+          className="flex w-full items-center justify-center rounded-lg border border-blue-900 bg-blue-500 p-4 font-medium tracking-wide text-zinc-900 hover:bg-blue-400"
         >
           {loading ? <Spinner className="h-5 w-5" /> : "Continue"}
         </button>
       </form>
       <div className="flex flex-col items-center space-y-3">
-        <p className="font-medium text-sm text-blue-600">Privacy policy</p>
+        <p className="text-sm font-medium text-blue-600">Privacy policy</p>
       </div>
     </>
   );

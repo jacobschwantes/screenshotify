@@ -33,12 +33,12 @@ const Dashboard: NextPage<PageProps> = (props) => {
   }, [isError, props.user]);
   const [data, setData] = useState("1w");
   return (
-    <div className="space-y-4 p-5 overflow-y-auto h-full ">
-      <div className="pb-5  border-b border-zinc-200 dark:border-zinc-700 dark:border-none items-center flex justify-between w-full">
-        <h3 className="text-lg leading-6 font-medium text-zinc-900 dark:text-zinc-100">
+    <div className="h-full space-y-4 overflow-y-auto p-5 ">
+      <div className="flex  w-full items-center justify-between border-b border-zinc-200 pb-5 dark:border-none dark:border-zinc-700">
+        <h3 className="text-lg font-medium leading-6 text-zinc-900 dark:text-zinc-100">
           Dashboard
         </h3>
-        <div className=" flex sm:mt-0  space-x-3">
+        <div className=" flex space-x-3  sm:mt-0">
           <button
             disabled={spin}
             type="button"
@@ -48,7 +48,7 @@ const Dashboard: NextPage<PageProps> = (props) => {
               mutate(["/api/user/usage"]);
               // asyncHero.execute();
             }}
-            className="inline-flex items-center p-2 border border-zinc-300 dark:border-zinc-800 dark:bg-black rounded-md shadow-sm text-sm font-medium text-zinc-700 bg-white hover:bg-zinc-50 dark:hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:ring-offset-zinc-800 "
+            className="inline-flex items-center rounded-md border border-zinc-300 bg-white p-2 text-sm font-medium text-zinc-700 shadow-sm hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-zinc-800 dark:bg-black dark:ring-offset-zinc-800 dark:hover:bg-zinc-900 "
           >
             <RefreshIcon
               className={clsx(
@@ -104,7 +104,10 @@ const Dashboard: NextPage<PageProps> = (props) => {
               ? usage?.data.chartData.usage7day
               : usage?.data.chartData.usage30day
           }
-          dark={props.preferences.theme === 'dark' || props.preferences.theme === 'system' && prefersDark}
+          dark={
+            props.preferences.theme === "dark" ||
+            (props.preferences.theme === "system" && prefersDark)
+          }
         />
       }
     </div>
@@ -126,23 +129,23 @@ const Stats: NextComponentType<NextPageContext, {}, StatsProps> = (props) => {
   return (
     <div>
       {props.isLoading ? (
-        <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 opacity-70">
+        <dl className="mt-5 grid grid-cols-1 gap-5 opacity-70 sm:grid-cols-2 lg:grid-cols-3">
           {Array.from(Array(3)).map((item) => (
             <div
               key={item}
-              className="relative bg-white dark:bg-black shadow rounded-2xl overflow-hidden dark:border dark:border-zinc-900 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t dark:before:border-rose-100/10 before:border-zinc-300 before:bg-gradient-to-r before:from-transparent dark:before:via-rose-100/10 before:via-zinc-100 before:to-transparent"
+              className="relative overflow-hidden rounded-2xl bg-white shadow before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-zinc-300 before:bg-gradient-to-r before:from-transparent before:via-zinc-100 before:to-transparent dark:border dark:border-zinc-900 dark:bg-black dark:before:border-rose-100/10 dark:before:via-rose-100/10"
             >
               <div className="flex items-center space-x-4 p-6">
-                <div className=" dark:bg-zinc-900 bg-zinc-300 rounded-md p-3">
-                  <div className="h-6 w-6 tedark:bg-zinc-900 bg-zinc-300" />
+                <div className=" rounded-md bg-zinc-300 p-3 dark:bg-zinc-900">
+                  <div className="tedark:bg-zinc-900 h-6 w-6 bg-zinc-300" />
                 </div>
-                <div className="flex flex-col flex-1 space-y-3">
-                  <p className="h-3 w-1/6 rounded-full dark:bg-zinc-900 bg-zinc-300 text-sm font-medium text-zinc-500 truncate dark:text-zinc-100"></p>
-                  <p className="text-2xl h-3 w-1/3 rounded-full dark:bg-zinc-900 bg-zinc-300 font-semibold text-zinc-900 dark:text-zinc-200"></p>{" "}
+                <div className="flex flex-1 flex-col space-y-3">
+                  <p className="h-3 w-1/6 truncate rounded-full bg-zinc-300 text-sm font-medium text-zinc-500 dark:bg-zinc-900 dark:text-zinc-100"></p>
+                  <p className="h-3 w-1/3 rounded-full bg-zinc-300 text-2xl font-semibold text-zinc-900 dark:bg-zinc-900 dark:text-zinc-200"></p>{" "}
                 </div>
               </div>
-              <div className="bg-zinc-50 dark:bg-black p-6 dark:border-t dark:border-zinc-900 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t dark:before:border-rose-100/10 before:border-zinc-100 before:bg-gradient-to-r before:from-transparent dark:before:via-rose-100/10 before:via-zinc-100 before:to-transparent">
-                <div className="h-3 w-1/6 dark:bg-zinc-900 bg-zinc-300 rounded-full"></div>
+              <div className="bg-zinc-50 p-6 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-zinc-100 before:bg-gradient-to-r before:from-transparent before:via-zinc-100 before:to-transparent dark:border-t dark:border-zinc-900 dark:bg-black dark:before:border-rose-100/10 dark:before:via-rose-100/10">
+                <div className="h-3 w-1/6 rounded-full bg-zinc-300 dark:bg-zinc-900"></div>
               </div>
             </div>
           ))}
@@ -152,20 +155,20 @@ const Stats: NextComponentType<NextPageContext, {}, StatsProps> = (props) => {
           {props.stats.map((item) => (
             <div
               key={item.id}
-              className="relative bg-white dark:bg-black pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-2xl overflow-hidden dark:border dark:border-zinc-900"
+              className="relative overflow-hidden rounded-2xl bg-white px-4 pt-5 pb-12 shadow dark:border dark:border-zinc-900 dark:bg-black sm:px-6 sm:pt-6"
             >
               <dt>
-                <div className="absolute bg-blue-600 rounded-md p-3">
+                <div className="absolute rounded-md bg-blue-600 p-3">
                   <item.icon
                     className="h-6 w-6 text-white"
                     aria-hidden="true"
                   />
                 </div>
-                <p className="ml-16 text-sm font-medium text-zinc-600 truncate dark:text-zinc-100">
+                <p className="ml-16 truncate text-sm font-medium text-zinc-600 dark:text-zinc-100">
                   {item.name}
                 </p>
               </dt>
-              <dd className="ml-16 pb-6 flex items-baseline sm:pb-7">
+              <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
                 <p className="text-2xl font-semibold text-zinc-900 dark:text-zinc-200">
                   {item.stat}
                 </p>
@@ -195,7 +198,7 @@ const Stats: NextComponentType<NextPageContext, {}, StatsProps> = (props) => {
                 </span>
                 {item.change}
               </p> */}
-                <div className="absolute bottom-0 inset-x-0 bg-zinc-50 dark:bg-black px-4 py-4 sm:px-6 dark:border-t dark:border-zinc-900">
+                <div className="absolute inset-x-0 bottom-0 bg-zinc-50 px-4 py-4 dark:border-t dark:border-zinc-900 dark:bg-black sm:px-6">
                   <div className="text-sm">
                     <Link href={item.href}>
                       <a className="font-medium text-blue-600 hover:text-blue-500">

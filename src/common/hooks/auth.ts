@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { firebaseApp } from "@modules/auth/firebase/client";
 const auth = getAuth(firebaseApp);
 export function useIdToken() {
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
   useEffect(() => {
     return auth.onIdTokenChanged(async function (user) {
       if (user) {
@@ -14,4 +14,3 @@ export function useIdToken() {
   }, []);
   return token;
 }
-

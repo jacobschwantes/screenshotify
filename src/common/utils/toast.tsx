@@ -9,7 +9,7 @@ interface ToastProps {
   };
 }
 export const dispatchToast = ({
-  options: { type = 'info', heading = 'Heading', message = 'Message', },
+  options: { type = "info", heading = "Heading", message = "Message" },
 }: ToastProps) => {
   toast(
     <div className="flex items-center space-x-3">

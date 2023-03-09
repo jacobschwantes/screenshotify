@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['cloud.screenshotify.io']
+    domains: ["cloud.screenshotify.io"],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

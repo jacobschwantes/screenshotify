@@ -69,7 +69,7 @@ export default function Notifications() {
   // }, []);
 
   return (
-    <Menu as="div" className=" inline-block  text-left xs:relative ">
+    <Menu as="div" className=" xs:relative  inline-block text-left ">
       <div className="flex items-center">
         <Menu.Button className=" ">
           <span className=" absolute z-10 rounded-xl bg-red-500 px-1 text-xs font-semibold text-white ">
@@ -91,11 +91,11 @@ export default function Notifications() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className=" absolute right-8 z-10 mt-2 origin-top-right rounded-md  bg-white dark:bg-zinc-800 shadow-lg ring-1  ring-black  ring-opacity-5 focus:outline-none xs:right-0 xs:left-auto xs:w-80 w-80 ">
+        <Menu.Items className=" xs:right-0 xs:left-auto xs:w-80 absolute right-8 z-10  mt-2 w-80 origin-top-right rounded-md  bg-white  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-zinc-800 ">
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
-                <div className=" flex items-center justify-between border-b dark:border-zinc-700 px-4 py-2 font-semibold transition-colors ">
+                <div className=" flex items-center justify-between border-b px-4 py-2 font-semibold transition-colors dark:border-zinc-700 ">
                   <div className="flex flex-col dark:text-zinc-50  ">
                     Notifications
                     <span className="text-sm font-normal text-zinc-500 dark:text-zinc-400">
@@ -119,7 +119,7 @@ export default function Notifications() {
                       return (
                         <div
                           key={index}
-                          className="flex cursor-pointer items-center space-x-3 bg-blue-50 dark:bg-zinc-700 p-3 hover:bg-zinc-100 dark:hover:bg-zinc-600 "
+                          className="flex cursor-pointer items-center space-x-3 bg-blue-50 p-3 hover:bg-zinc-100 dark:bg-zinc-700 dark:hover:bg-zinc-600 "
                         >
                           <MailIcon
                             className="h-10 w-10 flex-shrink-0 rounded-full  text-blue-500 transition-colors"
@@ -189,7 +189,7 @@ export default function Notifications() {
                   }}
                   className={clsx(
                     active ? "bg-zinc-100 dark:bg-zinc-700" : "",
-                    "block cursor-pointer rounded-b-lg border-t dark:border-zinc-700 px-4 py-2 text-center text-sm transition-colors dark:text-blue-500"
+                    "block cursor-pointer rounded-b-lg border-t px-4 py-2 text-center text-sm transition-colors dark:border-zinc-700 dark:text-blue-500"
                   )}
                 >
                   View All

@@ -13,13 +13,13 @@ const plans = [
   {
     name: "Pro",
     priceMonthly: 9,
-    priceYearly: 7.50,
+    priceYearly: 7.5,
     limit: "1000 requests / mo",
   },
   {
     name: "Pro+",
     priceMonthly: 15,
-    priceYearly: 12.50,
+    priceYearly: 12.5,
     limit: "2500 requests / mo",
   },
 ];
@@ -40,21 +40,21 @@ const Billing: NextPage = () => {
   const [annualBillingEnabled, setAnnualBillingEnabled] = useState(true);
 
   return (
-    <div className="flex-1 overflow-y-auto h-full p-5">
+    <div className="h-full flex-1 overflow-y-auto p-5">
       <SettingsLayout>
-        <main className=" pb-10 lg:py-12  max-w-7xl">
+        <main className=" max-w-7xl pb-10  lg:py-12">
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-5">
             {/* Payment details */}
-            <div className="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
+            <div className="space-y-6 sm:px-6 lg:col-span-9 lg:px-0">
               {/* Plan */}
               <section aria-labelledby="plan-heading">
                 <form action="#" method="POST">
-                  <div className="shadow sm:rounded-md sm:overflow-hidden">
-                    <div className="bg-white dark:bg-black py-6  space-y-6 sm:p-6">
+                  <div className="shadow sm:overflow-hidden sm:rounded-md">
+                    <div className="space-y-6 bg-white py-6  dark:bg-black sm:p-6">
                       <div>
                         <h2
                           id="plan-heading"
-                          className="text-lg leading-6 font-medium text-zinc-900 dark:text-zinc-100"
+                          className="text-lg font-medium leading-6 text-zinc-900 dark:text-zinc-100"
                         >
                           Plan
                         </h2>
@@ -67,7 +67,7 @@ const Billing: NextPage = () => {
                         <RadioGroup.Label className="sr-only">
                           Pricing plans
                         </RadioGroup.Label>
-                        <div className="relative bg-white dark:bg-black rounded-md -space-y-px">
+                        <div className="relative -space-y-px rounded-md bg-white dark:bg-black">
                           {plans.map((plan, planIdx) => (
                             <RadioGroup.Option
                               key={plan.name}
@@ -81,9 +81,9 @@ const Billing: NextPage = () => {
                                     ? "rounded-bl-md rounded-br-md"
                                     : "",
                                   checked
-                                    ? "bg-blue-50 border-blue-200 dark:border-blue-900 dark:bg-blue-900 dark:bg-opacity-50 z-10"
+                                    ? "z-10 border-blue-200 bg-blue-50 dark:border-blue-900 dark:bg-blue-900 dark:bg-opacity-50"
                                     : "border-zinc-200 dark:border-zinc-800",
-                                  "relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none"
+                                  "relative flex cursor-pointer flex-col border p-4 focus:outline-none md:grid md:grid-cols-3 md:pl-4 md:pr-6"
                                 )
                               }
                             >
@@ -93,16 +93,16 @@ const Billing: NextPage = () => {
                                     <span
                                       className={clsx(
                                         checked
-                                          ? "bg-blue-500 border-transparent"
-                                          : "bg-white border-zinc-300",
+                                          ? "border-transparent bg-blue-500"
+                                          : "border-zinc-300 bg-white",
                                         active
-                                          ? "ring-2 ring-offset-2 ring-zinc-900"
+                                          ? "ring-2 ring-zinc-900 ring-offset-2"
                                           : "",
-                                        "h-4 w-4 rounded-full border flex items-center justify-center"
+                                        "flex h-4 w-4 items-center justify-center rounded-full border"
                                       )}
                                       aria-hidden="true"
                                     >
-                                      <span className="rounded-full bg-white w-1.5 h-1.5" />
+                                      <span className="h-1.5 w-1.5 rounded-full bg-white" />
                                     </span>
                                     <RadioGroup.Label
                                       as="span"
@@ -123,17 +123,22 @@ const Billing: NextPage = () => {
                                         "font-medium"
                                       )}
                                     >
-                                      ${annualBillingEnabled ? plan.priceYearly : plan.priceMonthly} / mo
+                                      $
+                                      {annualBillingEnabled
+                                        ? plan.priceYearly
+                                        : plan.priceMonthly}{" "}
+                                      / mo
                                     </span>{" "}
-                                   
                                     <span
                                       className={
                                         checked
                                           ? "text-blue-700 dark:text-blue-500"
-                                          : "text-zinc-500 dark:text-zinc-400"  
+                                          : "text-zinc-500 dark:text-zinc-400"
                                       }
                                     >
-                                      {annualBillingEnabled ? 'billed yearly' : 'billed monthly'} 
+                                      {annualBillingEnabled
+                                        ? "billed yearly"
+                                        : "billed monthly"}
                                     </span>
                                   </RadioGroup.Description>
                                   <RadioGroup.Description
@@ -159,8 +164,10 @@ const Billing: NextPage = () => {
                           checked={annualBillingEnabled}
                           onChange={setAnnualBillingEnabled}
                           className={clsx(
-                            annualBillingEnabled ? "bg-blue-600" : "bg-zinc-200 dark:bg-zinc-800",
-                            "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:ring-offset-zinc-900 focus:ring-blue-600"
+                            annualBillingEnabled
+                              ? "bg-blue-600"
+                              : "bg-zinc-200 dark:bg-zinc-800",
+                            "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 dark:ring-offset-zinc-900"
                           )}
                         >
                           <span
@@ -169,7 +176,7 @@ const Billing: NextPage = () => {
                               annualBillingEnabled
                                 ? "translate-x-5"
                                 : "translate-x-0",
-                              "inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+                              "inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
                             )}
                           />
                         </Switch>
@@ -180,11 +187,11 @@ const Billing: NextPage = () => {
                         </Switch.Label>
                       </Switch.Group>
                     </div>
-                    <div className="px-4 py-3 bg-zinc-50 dark:bg-black text-right sm:px-6">
+                    <div className="bg-zinc-50 px-4 py-3 text-right dark:bg-black sm:px-6">
                       <button
-                      disabled
+                        disabled
                         type="submit"
-                        className="bg-blue-600  border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900"
+                        className="inline-flex  justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2"
                       >
                         Save
                       </button>
@@ -232,7 +239,7 @@ const Billing: NextPage = () => {
                                 {/*
                                     `relative` is added here due to a weird bug in Safari that causes `sr-only` headings to introduce overflow on the body on mobile.
                                   */}
-                                {/* <th
+              {/* <th
                                   scope="col"
                                   className="relative px-6 py-3 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider"
                                 >
@@ -271,9 +278,7 @@ const Billing: NextPage = () => {
                     </div>
                   </div>
                 </div>
-              </section> */} 
-
-
+              </section> */}
             </div>
           </div>
         </main>

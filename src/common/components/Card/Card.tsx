@@ -29,19 +29,19 @@ export default function Card({
   }
 
   return (
-    <div className="rounded-2xl   p-6  shadow-zinc-100 dark:shadow-zinc-900  flex justify-between items-center shadow-lg border-zinc-100 dark:border-zinc-900 dark:bg-zinc-800 border">
-      <div className="space-y-3 flex flex-col">
+    <div className="flex   items-center  justify-between rounded-2xl  border border-zinc-100 p-6 shadow-lg shadow-zinc-100 dark:border-zinc-900 dark:bg-zinc-800 dark:shadow-zinc-900">
+      <div className="flex flex-col space-y-3">
         <span className="space-y-3">
-          <h1 className=" font-semibold text-left text dark:text-zinc-100 ">
+          <h1 className=" text text-left font-semibold dark:text-zinc-100 ">
             {title}
           </h1>
-          <div className="flex space-x-2 items-center">
+          <div className="flex items-center space-x-2">
             {change < 0 ? (
-              <TrendingDownIcon className="  h-6 w-6 bg-red-100 dark:bg-red-600 dark:bg-opacity-25 text-red-500 dark:text-red-500 rounded-full p-1" />
+              <TrendingDownIcon className="  h-6 w-6 rounded-full bg-red-100 p-1 text-red-500 dark:bg-red-600 dark:bg-opacity-25 dark:text-red-500" />
             ) : (
-              <TrendingUpIcon className="  h-6 w-6 bg-green-100 dark:bg-lime-600 dark:bg-opacity-25 dark:text-green-500 text-green-500 rounded-full p-1" />
+              <TrendingUpIcon className="  h-6 w-6 rounded-full bg-green-100 p-1 text-green-500 dark:bg-lime-600 dark:bg-opacity-25 dark:text-green-500" />
             )}
-            <span className=" font-semibold text-sm  dark:text-zinc-100">
+            <span className=" text-sm font-semibold  dark:text-zinc-100">
               {(change > 0 ? "+" : "") + change.toFixed(1)}%
             </span>
           </div>

@@ -26,5 +26,5 @@ export {
   ColorPicker,
   Popover,
   Range,
-  Tabs
+  Tabs,
 };

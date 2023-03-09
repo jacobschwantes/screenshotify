@@ -13,7 +13,7 @@ export function withAuth(handler: any) {
         return handler({ ...req, uid, email, email_verified }, res);
       }
     } catch (e) {
-      res.status(401).send('error validating user');
+      res.status(401).send("error validating user");
     }
   };
 }

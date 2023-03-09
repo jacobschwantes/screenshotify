@@ -28,12 +28,12 @@ const Range: NextComponentType<NextPageContext, {}, RangeProps> = ({
     <label htmlFor="customRange1" className=" font-medium">
       {children}
     </label>
-    <div className="flex items-center space-x-3 flex-1">
+    <div className="flex flex-1 items-center space-x-3">
       <input
         style={{
           backgroundSize: ((value - min) * 100) / (max - min) + "% 100%",
         }}
-        className="appearance-none h-0.5 p-0 focus:outline-none focus:ring-0 focus:shadow-none bg-zinc-600 rounded-full slider w-full"
+        className="slider h-0.5 w-full appearance-none rounded-full bg-zinc-600 p-0 focus:shadow-none focus:outline-none focus:ring-0"
         value={value}
         type="range"
         min={min}
@@ -43,9 +43,9 @@ const Range: NextComponentType<NextPageContext, {}, RangeProps> = ({
       />
       {showValues && (
         <div className="relative">
-          <div className="absolute text-zinc-400 right-2 top-1/2 -translate-y-1/2 -space-y-1.5 pb-0.5  flex flex-col">
+          <div className="absolute right-2 top-1/2 flex -translate-y-1/2 flex-col -space-y-1.5  pb-0.5 text-zinc-400">
             <button
-              className="hover:text-zinc-200  transition-all duration-300 h-4 rounded"
+              className="h-4  rounded transition-all duration-300 hover:text-zinc-200"
               onClick={() => value + step <= max && set(value + step)}
             >
               <svg
@@ -58,7 +58,7 @@ const Range: NextComponentType<NextPageContext, {}, RangeProps> = ({
               </svg>
             </button>
             <button
-              className="hover:text-zinc-200 transition-all duration-300 h-4 rounded"
+              className="h-4 rounded transition-all duration-300 hover:text-zinc-200"
               onClick={() => value - step >= min && set(value - step)}
             >
               <svg height="inherit" fill="currentColor" viewBox="0 0 24 24">
@@ -75,7 +75,7 @@ const Range: NextComponentType<NextPageContext, {}, RangeProps> = ({
             type="number"
             name="number-input"
             id="number-input"
-            className="form-input shadow-sm focus:ring-blue-600 focus:border-blue-600 block max-w-[75px] sm:text-sm border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 rounded-md py-1.5"
+            className="form-input block max-w-[75px] rounded-md border-zinc-300 py-1.5 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 sm:text-sm"
           />
         </div>
       )}

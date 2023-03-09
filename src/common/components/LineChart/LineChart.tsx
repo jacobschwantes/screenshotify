@@ -151,12 +151,12 @@ export default function LineChart({
   const dataOptions = ["1w", "1m"];
 
   return isLoading ? (
-    <div className="relative overflow-hidden rounded-2xl border  dark:border-zinc-900  border-zinc-100 dark:bg-black space-y-3 opacity-70">
+    <div className="relative space-y-3 overflow-hidden rounded-2xl  border  border-zinc-100 opacity-70 dark:border-zinc-900 dark:bg-black">
       <div className="space-y-3 p-5">
-        <p className="h-4 dark:bg-zinc-900 bg-zinc-300 sm:w-60 w-1/2 rounded-full"></p>
-        <p className="h-3 dark:bg-zinc-900 bg-zinc-300 sm:w-96 w-1/4 rounded-full"></p>
+        <p className="h-4 w-1/2 rounded-full bg-zinc-300 dark:bg-zinc-900 sm:w-60"></p>
+        <p className="h-3 w-1/4 rounded-full bg-zinc-300 dark:bg-zinc-900 sm:w-96"></p>
       </div>
-      <div className="before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t dark:before:border-rose-100/10 before:border-zinc-300 before:bg-gradient-to-r before:from-transparent dark:before:via-rose-100/10 before:via-zinc-100 before:to-transparent">
+      <div className="before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-zinc-300 before:bg-gradient-to-r before:from-transparent before:via-zinc-100 before:to-transparent dark:before:border-rose-100/10 dark:before:via-rose-100/10">
         <div className=" ">
           <Chart
             options={options.loadingOptions}
@@ -173,17 +173,17 @@ export default function LineChart({
       </div>
     </div>
   ) : (
-    <div className="rounded-2xl  p-5 border  dark:border-zinc-900  border-zinc-100 dark:bg-black space-y-3">
-      <div className="flex justify-between items-start">
+    <div className="space-y-3  rounded-2xl border  border-zinc-100  p-5 dark:border-zinc-900 dark:bg-black">
+      <div className="flex items-start justify-between">
         <span>
-          <h1 className="text-lg leading-6 font-medium text-zinc-900 dark:text-zinc-100">
+          <h1 className="text-lg font-medium leading-6 text-zinc-900 dark:text-zinc-100">
             Requests
           </h1>
-          <p className="dark:text-zinc-400 text-zinc-500">
+          <p className="text-zinc-500 dark:text-zinc-400">
             {seriesOption === "1w" ? "Over last 7 days" : "Over last 30 days"}
           </p>
         </span>
-        <div className="text-zinc-100 flex space-x-3 text-sm">
+        <div className="flex space-x-3 text-sm text-zinc-100">
           {dataOptions.map((option, index) => (
             <button
               key={index}

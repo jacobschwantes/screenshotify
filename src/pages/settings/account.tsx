@@ -50,16 +50,17 @@ const Account: NextPage<AccountProps> = (props) => {
       );
   };
   return (
-    <div className="flex-1  p-5 h-full overflow-y-auto ">
+    <div className="h-full  flex-1 overflow-y-auto p-5 ">
       <SettingsLayout>
-        <main className="  space-y-5 max-w-7xl">
-          <p className="dark:text-zinc-300 font-medium">
-            Signed in as: <span className="font-normal ">{props.user.email}</span>
+        <main className="  max-w-7xl space-y-5">
+          <p className="font-medium dark:text-zinc-300">
+            Signed in as:{" "}
+            <span className="font-normal ">{props.user.email}</span>
           </p>
           <button
             onClick={handleResetPassword}
             type="button"
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:ring-offset-black"
+            className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:ring-offset-black"
           >
             Reset password {loading && <Spinner className="h-5 w-5" />}
           </button>

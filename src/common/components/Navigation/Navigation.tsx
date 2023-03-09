@@ -44,7 +44,7 @@ export default function Navigation({ wideNav }: NavigationProps) {
   ];
 
   return (
-    <nav className=" flex flex-col justify-between p-3 z-10 h-full  ">
+    <nav className=" z-10 flex h-full flex-col justify-between p-3  ">
       <div className="flex-col  space-y-4 ">
         {generalNavigation.map((item, index) => (
           <Link key={index} href={item.href}>
@@ -54,7 +54,7 @@ export default function Navigation({ wideNav }: NavigationProps) {
                 item.current
                   ? "bg-blue-200 text-blue-600 dark:bg-blue-900 dark:text-blue-600   "
                   : "text-zinc-400 dark:text-zinc-300 ",
-                " flex items-center  p-3 rounded-lg border border-transparent text-center transition-all  hover:bg-zinc-100 dark:hover:bg-zinc-900 dark:bg-opacity-50 "
+                " flex items-center  rounded-lg border border-transparent p-3 text-center transition-all  hover:bg-zinc-100 dark:bg-opacity-50 dark:hover:bg-zinc-900 "
               )}
             >
               <item.icon
@@ -78,7 +78,7 @@ export default function Navigation({ wideNav }: NavigationProps) {
             signOut(auth);
           }}
           className={clsx(
-            " flex items-center  p-3 rounded-lg border border-transparent text-center  text-zinc-400 dark:text-zinc-300 transition-all hover:bg-zinc-100 dark:hover:bg-zinc-900 dark:bg-opacity-50 "
+            " flex items-center  rounded-lg border border-transparent p-3 text-center  text-zinc-400 transition-all hover:bg-zinc-100 dark:bg-opacity-50 dark:text-zinc-300 dark:hover:bg-zinc-900 "
           )}
         >
           <LogoutIcon

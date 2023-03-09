@@ -14,7 +14,7 @@ type Data = {
   message: string;
   keys?: Partial<ApiKey>[];
   error?: string;
-  key?: ApiKey
+  key?: ApiKey;
 };
 const generateKey = () => {
   const rand = crypto.randomBytes(20);

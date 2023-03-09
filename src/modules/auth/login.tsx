@@ -33,7 +33,7 @@ const resetPassword = httpsCallable(functions, "resetPassword");
 const Login: NextPage = () => {
   const [login, setLogin] = useState(true);
   return (
-    <div className="bg-black h-screen flex justify-center items-center w-screen">
+    <div className="flex h-screen w-screen items-center justify-center bg-black">
       {login ? (
         <LoginCard setLogin={setLogin} />
       ) : (
@@ -117,20 +117,20 @@ const PasswordPage: NextComponentType<
       }}
       className="flex flex-col space-y-6"
     >
-      <h1 className="text-zinc-100 text-3xl font-bold">Enter password</h1>
+      <h1 className="text-3xl font-bold text-zinc-100">Enter password</h1>
       <button
         type="button"
         onClick={() => setEmailValidated(false)}
-        className="p-4 font-bold rounded-lg focus:outline-none  active:scale-[.98] hover:brightness-150 active:bg-zinc-900  border-zinc-800 border flex items-center space-x-3 text-white "
+        className="flex items-center space-x-3 rounded-lg  border border-zinc-800 p-4  font-bold text-white hover:brightness-150 focus:outline-none active:scale-[.98] active:bg-zinc-900 "
       >
-        <UserIcon className="h-7 border-2 rounded-full p-0.5 text-zinc-400" />
+        <UserIcon className="h-7 rounded-full border-2 p-0.5 text-zinc-400" />
         <p className="truncate">{email}</p>
       </button>
       <div className="flex flex-col space-y-1 pb-5">
-        <label htmlFor="email" className="text-zinc-100 font-medium text-sm">
+        <label htmlFor="email" className="text-sm font-medium text-zinc-100">
           Password
         </label>
-        <div className="w-full relative">
+        <div className="relative w-full">
           <input
             value={password}
             onChange={(e) => {
@@ -143,14 +143,14 @@ const PasswordPage: NextComponentType<
             spellCheck={false}
             type={showPassword ? "text" : "password"}
             className={
-              "form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-zinc-400 border-zinc-800 border " +
+              "form-input w-full rounded-lg border border-zinc-800 bg-black py-4 pr-10 pl-4 font-medium text-zinc-400 focus:outline-none " +
               (error ? "border-red-500" : "focus:border-blue-500")
             }
           ></input>
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="cursor-pointer absolute inset-y-0 right-0 pr-4 flex items-center"
+            className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-4"
           >
             {showPassword ? (
               <EyeIcon className="h-5 text-zinc-400" />
@@ -159,19 +159,19 @@ const PasswordPage: NextComponentType<
             )}
           </button>
         </div>
-        <p className="text-red-500 font-medium text-sm">{error}</p>
+        <p className="text-sm font-medium text-red-500">{error}</p>
       </div>
       <button
         type="button"
         disabled={passwordResetLoading}
         onClick={handleResetPassword}
-        className="font-medium text-blue-600 self-start"
+        className="self-start font-medium text-blue-600"
       >
         Forgot password?
       </button>
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-zinc-900 flex items-center justify-center"
+        className="flex w-full items-center justify-center rounded-lg border border-blue-900 bg-blue-500 p-4 font-medium tracking-wide text-zinc-900 hover:bg-blue-400"
       >
         {loading ? <Spinner className="h-5 w-5" /> : "Continue"}
       </button>
@@ -206,9 +206,9 @@ const EmailPage: NextComponentType<NextPageContext, {}, EmailPageProps> = ({
         }}
         className="flex flex-col space-y-4"
       >
-        <h1 className="text-zinc-100 text-3xl font-bold">Sign in</h1>
+        <h1 className="text-3xl font-bold text-zinc-100">Sign in</h1>
         <div className="flex flex-col space-y-1 pb-5">
-          <label htmlFor="email" className="text-zinc-100 font-medium text-sm">
+          <label htmlFor="email" className="text-sm font-medium text-zinc-100">
             Email
           </label>
           <input
@@ -222,22 +222,22 @@ const EmailPage: NextComponentType<NextPageContext, {}, EmailPageProps> = ({
             name="email"
             id="email"
             className={
-              "form-input p-4 font-medium rounded-lg focus:outline-none bg-black text-zinc-400 border-zinc-800 border " +
+              "form-input rounded-lg border border-zinc-800 bg-black p-4 font-medium text-zinc-400 focus:outline-none " +
               (error ? "border-red-500" : "focus:border-blue-500")
             }
           ></input>
-          <p className="text-red-500 font-medium text-sm">{error}</p>
+          <p className="text-sm font-medium text-red-500">{error}</p>
         </div>
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-zinc-900 flex items-center justify-center"
+          className="flex w-full items-center justify-center rounded-lg border border-blue-900 bg-blue-500 p-4 font-medium tracking-wide text-zinc-900 hover:bg-blue-400"
         >
           {loading ? <Spinner className="h-5 w-5" /> : "Continue"}
         </button>
         <button
           onClick={() => setLogin(false)}
           type="button"
-          className=" hover:bg-zinc-900 hover:bg-opacity-30 w-full border border-zinc-800 p-4 rounded-lg font-medium tracking-wide text-zinc-100"
+          className=" w-full rounded-lg border border-zinc-800 p-4 font-medium tracking-wide text-zinc-100 hover:bg-zinc-900 hover:bg-opacity-30"
         >
           Create account
         </button>
@@ -262,16 +262,16 @@ const LoginCard: NextComponentType<NextPageContext, {}, LoginCardProps> = ({
   const [emailValidated, setEmailValidated] = useState(false);
 
   return (
-    <div className="sm:border border-zinc-900 rounded-2xl sm:p-10 p-5 max-w-lg w-full space-y-4">
-   <div className="pb-10">
+    <div className="w-full max-w-lg space-y-4 rounded-2xl border-zinc-900 p-5 sm:border sm:p-10">
+      <div className="pb-10">
         <Image
-          className="h-8 hidden dark:block w-auto"
+          className="hidden h-8 w-auto dark:block"
           src={logo}
           alt="Company name"
         />
 
         <Image
-          className="h-8 dark:hidden w-auto "
+          className="h-8 w-auto dark:hidden "
           src={logo_light}
           alt="Company name"
         />
@@ -333,9 +333,9 @@ const SignUpPage: NextComponentType<NextPageContext, {}, SignUpPageProps> = ({
         }}
         className="flex flex-col space-y-4"
       >
-        <h1 className="text-zinc-100 text-3xl font-bold">Sign up</h1>
+        <h1 className="text-3xl font-bold text-zinc-100">Sign up</h1>
         <div className="flex flex-col space-y-1">
-          <label htmlFor="email" className="text-zinc-100 font-medium text-sm">
+          <label htmlFor="email" className="text-sm font-medium text-zinc-100">
             Email
           </label>
           <input
@@ -354,17 +354,17 @@ const SignUpPage: NextComponentType<NextPageContext, {}, SignUpPageProps> = ({
             name="email"
             id="email"
             className={
-              "form-input p-4 font-medium rounded-lg focus:outline-none bg-black text-zinc-400 border-zinc-800 border " +
+              "form-input rounded-lg border border-zinc-800 bg-black p-4 font-medium text-zinc-400 focus:outline-none " +
               (emailError ? "border-red-500" : "focus:border-blue-500")
             }
           ></input>
-          <p className="text-red-500 font-medium text-sm">{emailError}</p>
+          <p className="text-sm font-medium text-red-500">{emailError}</p>
         </div>
         <div className="flex flex-col space-y-1 pb-5">
-          <label htmlFor="email" className="text-zinc-100 font-medium text-sm">
+          <label htmlFor="email" className="text-sm font-medium text-zinc-100">
             Password
           </label>
-          <div className="w-full relative">
+          <div className="relative w-full">
             <input
               value={password}
               onChange={(e) => {
@@ -382,14 +382,14 @@ const SignUpPage: NextComponentType<NextPageContext, {}, SignUpPageProps> = ({
               spellCheck={false}
               type={showPassword ? "text" : "password"}
               className={
-                "form-input pr-10 pl-4 py-4 w-full font-medium rounded-lg focus:outline-none bg-black text-zinc-400 border-zinc-800 border " +
+                "form-input w-full rounded-lg border border-zinc-800 bg-black py-4 pr-10 pl-4 font-medium text-zinc-400 focus:outline-none " +
                 (error ? "border-red-500" : "focus:border-blue-500")
               }
             ></input>
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="cursor-pointer absolute inset-y-0 right-0 pr-4 flex items-center"
+              className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-4"
             >
               {showPassword ? (
                 <EyeIcon className="h-5 text-zinc-400" />
@@ -398,20 +398,20 @@ const SignUpPage: NextComponentType<NextPageContext, {}, SignUpPageProps> = ({
               )}
             </button>
           </div>
-          <p className="text-red-500 font-medium text-sm">{passwordError}</p>
-          <p className="text-red-500 font-medium text-sm">{error}</p>
+          <p className="text-sm font-medium text-red-500">{passwordError}</p>
+          <p className="text-sm font-medium text-red-500">{error}</p>
         </div>
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-400 w-full border border-blue-900 p-4 rounded-lg font-medium tracking-wide text-zinc-900 flex items-center justify-center"
+          className="flex w-full items-center justify-center rounded-lg border border-blue-900 bg-blue-500 p-4 font-medium tracking-wide text-zinc-900 hover:bg-blue-400"
         >
           {loading ? <Spinner className="h-5 w-5" /> : "Continue"}
         </button>
         <button
           type="button"
           onClick={() => setLogin(true)}
-          className=" hover:bg-zinc-900 hover:bg-opacity-30 w-full border border-zinc-800 p-4 rounded-lg font-medium tracking-wide text-zinc-100"
+          className=" w-full rounded-lg border border-zinc-800 p-4 font-medium tracking-wide text-zinc-100 hover:bg-zinc-900 hover:bg-opacity-30"
         >
           Already have an account?
         </button>
@@ -419,7 +419,7 @@ const SignUpPage: NextComponentType<NextPageContext, {}, SignUpPageProps> = ({
       <div className="flex flex-col items-center space-y-3">
         <a
           href="https://screenshotify.io/privacy"
-          className="font-medium text-sm text-blue-600"
+          className="text-sm font-medium text-blue-600"
         >
           Privacy policy
         </a>
@@ -437,16 +437,16 @@ const SignUpCard: NextComponentType<NextPageContext, {}, SignUpCardProps> = ({
   setLogin,
 }) => {
   return (
-    <div className="sm:border border-zinc-800 rounded-2xl sm:p-10 p-5 max-w-lg w-full space-y-4">
+    <div className="w-full max-w-lg space-y-4 rounded-2xl border-zinc-800 p-5 sm:border sm:p-10">
       <div className="pb-10">
         <Image
-          className="h-8 hidden dark:block w-auto"
+          className="hidden h-8 w-auto dark:block"
           src={logo}
           alt="Company name"
         />
 
         <Image
-          className="h-8 dark:hidden w-auto "
+          className="h-8 w-auto dark:hidden "
           src={logo_light}
           alt="Company name"
         />

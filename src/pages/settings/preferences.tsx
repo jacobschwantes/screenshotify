@@ -98,7 +98,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
     setIsSaving(false);
   };
   return (
-    <div className="flex-1  p-5 h-full overflow-y-auto ">
+    <div className="h-full  flex-1 overflow-y-auto p-5 ">
       <SettingsLayout>
         {isLoading ? (
           <Spinner className="h-5" />
@@ -106,8 +106,12 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
           <div className="max-w-4xl space-y-6 ">
             <RadioGroup value={selectedTheme} onChange={setSelectedTheme}>
               <RadioGroup.Label className="text-sm">
-                <h1 className="font-medium dark:text-zinc-300 text-zinc-800">Theme</h1>
-                <p className="dark:text-zinc-300 text-zinc-600">Select UI theme preference</p>
+                <h1 className="font-medium text-zinc-800 dark:text-zinc-300">
+                  Theme
+                </h1>
+                <p className="text-zinc-600 dark:text-zinc-300">
+                  Select UI theme preference
+                </p>
               </RadioGroup.Label>
 
               <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
@@ -119,67 +123,67 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                           className={clsx(
                             checked ? "outline-blue-600" : "outline-none",
 
-                            "relative outline rounded-lg shadow-sm cursor-pointer focus:outline-none "
+                            "relative cursor-pointer rounded-lg shadow-sm outline focus:outline-none "
                           )}
                         >
                           {theme.title === "System preference" ? (
                             <div className="">
-                              <div className="w-1/2 overflow-hidden h-full absolute">
-                                <div className="pt-4 px-4  sm:w-[286px]  h-full aspect-video rounded-lg flex flex-col absolute  bg-zinc-200">
-                                  <div className="flex-1 rounded-t-xl bg-white flex flex-col">
-                                    <div className="w-full border-b flex p-2 border-zinc-200">
+                              <div className="absolute h-full w-1/2 overflow-hidden">
+                                <div className="absolute flex  aspect-video  h-full flex-col rounded-lg bg-zinc-200 px-4 pt-4  sm:w-[286px]">
+                                  <div className="flex flex-1 flex-col rounded-t-xl bg-white">
+                                    <div className="flex w-full border-b border-zinc-200 p-2">
                                       <div className="flex space-x-1">
-                                        <div className="bg-red-500 h-1.5 w-1.5 rounded-full" />
-                                        <div className="bg-yellow-500 h-1.5 w-1.5 rounded-full" />
-                                        <div className="bg-green-500 h-1.5 w-1.5 rounded-full" />
+                                        <div className="h-1.5 w-1.5 rounded-full bg-red-500" />
+                                        <div className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
+                                        <div className="h-1.5 w-1.5 rounded-full bg-green-500" />
                                       </div>
                                     </div>
                                     <div className="flex w-full flex-1 divide-x divide-zinc-200">
-                                      <div className="flex flex-col space-y-2 w-1/5 p-2">
+                                      <div className="flex w-1/5 flex-col space-y-2 p-2">
                                         {Array.from(Array(5)).map((item) => (
                                           <div
                                             key={item}
-                                            className="w-full h-1.5 bg-zinc-200 rounded-full"
+                                            className="h-1.5 w-full rounded-full bg-zinc-200"
                                           />
                                         ))}
                                       </div>
-                                      <div className="flex flex-col pt-2 px-2 flex-1 space-y-2">
+                                      <div className="flex flex-1 flex-col space-y-2 px-2 pt-2">
                                         <div className="flex justify-between">
-                                          <div className="w-1/2 h-1.5 rounded-full bg-zinc-200" />
-                                          <div className="w-1/5 h-2.5 bg-zinc-300 rounded-sm" />
-                                          <div className="w-1/5 h-2.5  bg-zinc-200 rounded-sm" />
+                                          <div className="h-1.5 w-1/2 rounded-full bg-zinc-200" />
+                                          <div className="h-2.5 w-1/5 rounded-sm bg-zinc-300" />
+                                          <div className="h-2.5 w-1/5  rounded-sm bg-zinc-200" />
                                         </div>
-                                        <div className="rounded-t w-full bg-zinc-200 flex-1"></div>
+                                        <div className="w-full flex-1 rounded-t bg-zinc-200"></div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                              <div className="pt-4 px-4  w-full bg-zinc-900 aspect-video rounded-r-lg rounded-l-xl flex flex-col ">
-                                <div className="flex-1 rounded-t-lg bg-black flex flex-col">
-                                  <div className="w-full border-b flex p-2 border-zinc-800">
+                              <div className="flex aspect-video  w-full flex-col rounded-r-lg rounded-l-xl bg-zinc-900 px-4 pt-4 ">
+                                <div className="flex flex-1 flex-col rounded-t-lg bg-black">
+                                  <div className="flex w-full border-b border-zinc-800 p-2">
                                     <div className="flex space-x-1">
-                                      <div className="bg-red-500 h-1.5 w-1.5 rounded-full" />
-                                      <div className="bg-yellow-500 h-1.5 w-1.5 rounded-full" />
-                                      <div className="bg-green-500 h-1.5 w-1.5 rounded-full" />
+                                      <div className="h-1.5 w-1.5 rounded-full bg-red-500" />
+                                      <div className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
+                                      <div className="h-1.5 w-1.5 rounded-full bg-green-500" />
                                     </div>
                                   </div>
                                   <div className="flex w-full flex-1 divide-x divide-zinc-800">
-                                    <div className="flex flex-col space-y-2 w-1/5 p-2">
+                                    <div className="flex w-1/5 flex-col space-y-2 p-2">
                                       {Array.from(Array(5)).map((item) => (
                                         <div
                                           key={item}
-                                          className="w-full h-1.5 rounded-full bg-zinc-800"
+                                          className="h-1.5 w-full rounded-full bg-zinc-800"
                                         />
                                       ))}
                                     </div>
-                                    <div className="flex flex-col pt-2 px-2 flex-1 space-y-2">
+                                    <div className="flex flex-1 flex-col space-y-2 px-2 pt-2">
                                       <div className="flex justify-between">
-                                        <div className="w-1/2 h-1.5 rounded-full bg-zinc-800" />
-                                        <div className="w-1/5 h-2.5 bg-zinc-800 rounded-sm" />
-                                        <div className="w-1/5 h-2.5 bg-zinc-800 rounded-sm" />
+                                        <div className="h-1.5 w-1/2 rounded-full bg-zinc-800" />
+                                        <div className="h-2.5 w-1/5 rounded-sm bg-zinc-800" />
+                                        <div className="h-2.5 w-1/5 rounded-sm bg-zinc-800" />
                                       </div>
-                                      <div className="bg-zinc-800 rounded-t-lg w-full flex-1"></div>
+                                      <div className="w-full flex-1 rounded-t-lg bg-zinc-800"></div>
                                     </div>
                                   </div>
                                 </div>
@@ -191,7 +195,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                                 theme.title === "Dark"
                                   ? "bg-zinc-900"
                                   : "bg-zinc-200",
-                                "pt-4 px-4  w-full aspect-video rounded-lg flex flex-col"
+                                "flex aspect-video  w-full flex-col rounded-lg px-4 pt-4"
                               )}
                             >
                               <div
@@ -199,7 +203,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                                   theme.title === "Dark"
                                     ? "bg-black"
                                     : "bg-white",
-                                  "flex-1 rounded-t-lg flex flex-col"
+                                  "flex flex-1 flex-col rounded-t-lg"
                                 )}
                               >
                                 <div
@@ -207,13 +211,13 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                                     theme.title === "Dark"
                                       ? "border-zinc-800"
                                       : "border-zinc-200",
-                                    "w-full border-b flex p-2"
+                                    "flex w-full border-b p-2"
                                   )}
                                 >
                                   <div className="flex space-x-1">
-                                    <div className="bg-red-500 h-1.5 w-1.5 rounded-full" />
-                                    <div className="bg-yellow-500 h-1.5 w-1.5 rounded-full" />
-                                    <div className="bg-green-500 h-1.5 w-1.5 rounded-full" />
+                                    <div className="h-1.5 w-1.5 rounded-full bg-red-500" />
+                                    <div className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
+                                    <div className="h-1.5 w-1.5 rounded-full bg-green-500" />
                                   </div>
                                 </div>
                                 <div
@@ -224,7 +228,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                                     "flex w-full flex-1 divide-x"
                                   )}
                                 >
-                                  <div className="flex flex-col space-y-2 w-1/5 p-2">
+                                  <div className="flex w-1/5 flex-col space-y-2 p-2">
                                     {Array.from(Array(5)).map((item) => (
                                       <div
                                         key={item}
@@ -232,19 +236,19 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                                           theme.title === "Dark"
                                             ? "bg-zinc-800"
                                             : "bg-zinc-200",
-                                          "w-full h-1.5 rounded-full"
+                                          "h-1.5 w-full rounded-full"
                                         )}
                                       />
                                     ))}
                                   </div>
-                                  <div className="flex flex-col pt-2 px-2 flex-1 space-y-2">
+                                  <div className="flex flex-1 flex-col space-y-2 px-2 pt-2">
                                     <div className="flex justify-between">
                                       <div
                                         className={clsx(
                                           theme.title === "Dark"
                                             ? "bg-zinc-800"
                                             : "bg-zinc-200",
-                                          "w-1/2 h-1.5 rounded-full"
+                                          "h-1.5 w-1/2 rounded-full"
                                         )}
                                       />
                                       <div
@@ -252,7 +256,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                                           theme.title === "Dark"
                                             ? "bg-zinc-800"
                                             : "bg-zinc-200",
-                                          "w-1/5 h-2.5 rounded-sm"
+                                          "h-2.5 w-1/5 rounded-sm"
                                         )}
                                       />
                                       <div
@@ -260,7 +264,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                                           theme.title === "Dark"
                                             ? "bg-zinc-800"
                                             : "bg-zinc-200",
-                                          "w-1/5 h-2.5 rounded-sm"
+                                          "h-2.5 w-1/5 rounded-sm"
                                         )}
                                       />
                                     </div>
@@ -269,7 +273,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                                         theme.title === "Dark"
                                           ? "bg-zinc-800"
                                           : "bg-zinc-200",
-                                        "rounded-t w-full flex-1"
+                                        "w-full flex-1 rounded-t"
                                       )}
                                     ></div>
                                   </div>
@@ -287,13 +291,13 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                             <CheckCircleIcon
                               className={clsx(
                                 !checked ? "invisible" : "",
-                                "h-6 w-6 text-blue-600 -m-1.5"
+                                "-m-1.5 h-6 w-6 text-blue-600"
                               )}
                               aria-hidden="true"
                             />{" "}
                           </span>
                         </div>
-                        <p className="dark:text-zinc-200 text-zinc-600 text-sm  font-medium">
+                        <p className="text-sm font-medium text-zinc-600  dark:text-zinc-200">
                           {theme.title}
                         </p>
                       </div>
@@ -303,12 +307,14 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
               </div>
             </RadioGroup>
 
-            <fieldset className="border-b dark:border-zinc-800 border-zinc-300">
+            <fieldset className="border-b border-zinc-300 dark:border-zinc-800">
               <legend className="sr-only">Email preferences</legend>
 
-              <div className="divide-y dark:divide-zinc-800 divide-zinc-300">
-                <div className="text-sm pb-4">
-                  <h1 className="font-medium dark:text-zinc-300 text-zinc-800">Email</h1>
+              <div className="divide-y divide-zinc-300 dark:divide-zinc-800">
+                <div className="pb-4 text-sm">
+                  <h1 className="font-medium text-zinc-800 dark:text-zinc-300">
+                    Email
+                  </h1>
                   <p className="text-zinc-500">
                     Select email messaging preferences
                   </p>
@@ -318,7 +324,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                   <div className="min-w-0 flex-1 text-sm">
                     <label
                       htmlFor="marketing-news"
-                      className="font-medium dark:text-zinc-300 text-zinc-800"
+                      className="font-medium text-zinc-800 dark:text-zinc-300"
                     >
                       Marketing & News
                     </label>
@@ -330,7 +336,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                       major changes to the platform.
                     </p>
                   </div>
-                  <div className="ml-3 flex items-center h-5">
+                  <div className="ml-3 flex h-5 items-center">
                     <input
                       checked={emailOptions.marketing}
                       onChange={() =>
@@ -343,7 +349,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                       aria-describedby="marketing-news-description"
                       name="marketing-news"
                       type="checkbox"
-                      className="form-checkbox focus:ring-blue-600 dark:focus:ring-offset-black h-4 w-4 text-blue-600 dark:border-zinc-900 rounded dark:bg-zinc-800"
+                      className="form-checkbox h-4 w-4 rounded text-blue-600 focus:ring-blue-600 dark:border-zinc-900 dark:bg-zinc-800 dark:focus:ring-offset-black"
                     />
                   </div>
                 </div>
@@ -351,7 +357,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                   <div className="min-w-0 flex-1 text-sm">
                     <label
                       htmlFor="transactional"
-                      className="font-medium dark:text-zinc-300 text-zinc-800"
+                      className="font-medium text-zinc-800 dark:text-zinc-300"
                     >
                       Transactional
                     </label>
@@ -360,7 +366,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                       are made to your account.
                     </p>
                   </div>
-                  <div className="ml-3 flex items-center h-5">
+                  <div className="ml-3 flex h-5 items-center">
                     <input
                       onChange={() =>
                         setEmailOptions({
@@ -373,7 +379,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                       aria-describedby="transactional-description"
                       name="transactional"
                       type="checkbox"
-                      className="form-checkbox focus:ring-blue-600 dark:focus:ring-offset-black h-4 w-4 text-blue-600 dark:border-zinc-900 rounded dark:bg-zinc-800"
+                      className="form-checkbox h-4 w-4 rounded text-blue-600 focus:ring-blue-600 dark:border-zinc-900 dark:bg-zinc-800 dark:focus:ring-offset-black"
                     />
                   </div>
                 </div>
@@ -381,7 +387,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                   <div className="min-w-0 flex-1 text-sm">
                     <label
                       htmlFor="billing"
-                      className="font-medium dark:text-zinc-300 text-zinc-800"
+                      className="font-medium text-zinc-800 dark:text-zinc-300"
                     >
                       Billing
                     </label>
@@ -390,7 +396,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                       available.
                     </p>
                   </div>
-                  <div className="ml-3 flex items-center h-5">
+                  <div className="ml-3 flex h-5 items-center">
                     <input
                       onChange={() =>
                         setEmailOptions({
@@ -403,7 +409,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                       aria-describedby="billing-description"
                       name="billing"
                       type="checkbox"
-                      className="form-checkbox focus:ring-blue-600 dark:focus:ring-offset-black h-4 w-4 text-blue-600 dark:border-zinc-900 rounded dark:bg-zinc-800"
+                      className="form-checkbox h-4 w-4 rounded text-blue-600 focus:ring-blue-600 dark:border-zinc-900 dark:bg-zinc-800 dark:focus:ring-offset-black"
                     />
                   </div>
                 </div>
@@ -416,7 +422,7 @@ const Account: NextPage<PreferencesProps> = ({ idToken }) => {
                   disabled={isSaving}
                   type="button"
                   onClick={saveChanges}
-                  className="bg-blue-600  border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900"
+                  className="inline-flex  justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2"
                 >
                   {isSaving ? <Spinner className="h-5" /> : <span>Save</span>}
                 </button>

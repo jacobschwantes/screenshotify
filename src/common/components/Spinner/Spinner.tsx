@@ -3,12 +3,12 @@ import { NextComponentType, NextPageContext } from "next";
 interface SpinnerProps {
   className: string;
 }
-const Spinner: NextComponentType<NextPageContext, {}, SpinnerProps> = (
-  {className}
-) => {
+const Spinner: NextComponentType<NextPageContext, {}, SpinnerProps> = ({
+  className,
+}) => {
   return (
     <svg
-      className={clsx("animate-spin h-6 w-6", className)}
+      className={clsx("h-6 w-6 animate-spin", className)}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
