@@ -137,11 +137,11 @@ const Stats: NextComponentType<NextPageContext, {}, StatsProps> = (props) => {
             >
               <div className="flex items-center space-x-4 p-6">
                 <div className=" rounded-md bg-zinc-300 p-3 dark:bg-zinc-900">
-                  <div className="tedark:bg-zinc-900 h-6 w-6 bg-zinc-300" />
+                  <div className="h-6 w-6 bg-zinc-300 dark:bg-zinc-900" />
                 </div>
                 <div className="flex flex-1 flex-col space-y-3">
                   <p className="h-3 w-1/6 truncate rounded-full bg-zinc-300 text-sm font-medium text-zinc-500 dark:bg-zinc-900 dark:text-zinc-100"></p>
-                  <p className="h-3 w-1/3 rounded-full bg-zinc-300 text-2xl font-semibold text-zinc-900 dark:bg-zinc-900 dark:text-zinc-200"></p>{" "}
+                  <p className="h-3 w-1/3 rounded-full bg-zinc-300 text-2xl font-semibold text-zinc-900 dark:bg-zinc-900 dark:text-zinc-200"></p>
                 </div>
               </div>
               <div className="bg-zinc-50 p-6 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-zinc-100 before:bg-gradient-to-r before:from-transparent before:via-zinc-100 before:to-transparent dark:border-t dark:border-zinc-900 dark:bg-black dark:before:border-rose-100/10 dark:before:via-rose-100/10">
