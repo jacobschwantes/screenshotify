@@ -2,25 +2,29 @@ import { NextPage } from "next";
 import { useState } from "react";
 import { RadioGroup, Switch } from "@headlessui/react";
 import SettingsLayout from "@layouts/SettingsLayout";
+import Script from "next/script";
 import clsx from "clsx";
+import { User } from "firebase/auth";
+import { usePrefersDark } from "@hooks/theme";
+import { Preferences } from "@customTypes/global";
 const plans = [
   {
     name: "Free",
     priceMonthly: 0,
     priceYearly: 0,
-    limit: "200 requests / mo",
+    limit: "100 requests / mo",
   },
   {
     name: "Pro",
-    priceMonthly: 9,
-    priceYearly: 7.5,
+    priceMonthly: 8,
+    priceYearly: 4.16,
     limit: "1000 requests / mo",
   },
   {
     name: "Pro+",
     priceMonthly: 15,
-    priceYearly: 12.5,
-    limit: "2500 requests / mo",
+    priceYearly: 6.66,
+    limit: "5000 requests / mo",
   },
 ];
 const payments = [
@@ -34,13 +38,58 @@ const payments = [
   },
   // More payments...
 ];
+interface BillingProps {
+  idToken: string;
+  user: User;
+  preferences: Preferences;
+}
 
-const Billing: NextPage = () => {
+const Billing: NextPage<BillingProps> = ({ user, preferences, idToken }) => {
   const [selectedPlan, setSelectedPlan] = useState(plans[0]);
   const [annualBillingEnabled, setAnnualBillingEnabled] = useState(true);
+  const prefersDark = usePrefersDark();
+  const openCheckout = () => {
+    const enableDark =
+      preferences.theme === "dark" ||
+      (preferences.theme === "system" && prefersDark);
+    user.email &&
+      window.Paddle.Checkout.open({
+        product: 33291,
+        email: user.email,
+        displayModeTheme: enableDark ? "dark" : "light",
+        //@ts-ignore
+        passthrough: {
+          "user_id": idToken
+        }
+      });
+  };
 
   return (
     <div className="h-full flex-1 overflow-y-auto p-5">
+      <Script
+        key="init-paddle"
+        src="https://cdn.paddle.com/paddle/paddle.js"
+        onLoad={() => {
+          console.log("On paddle load");
+          if (true) {
+            window.Paddle.Environment.set("sandbox");
+          }
+          window.Paddle.Setup({
+            vendor: 7584,
+            eventCallback: function (data) {
+              console.log("event callback");
+              // The data.event will specify the event type
+              if (data.event === "Checkout.Loaded") {
+                console.log(data.eventData); // Data specifics on the event
+              } else if (data.event === "Checkout.Complete") {
+                console.log(data.eventData); // Data specifics on the event
+              } else if (data.event === "Checkout.Close") {
+                console.log(data.eventData); // Data specifics on the event
+              }
+            },
+          });
+        }}
+      />
       <SettingsLayout>
         <main className=" max-w-7xl pb-10  lg:py-12">
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-5">
@@ -190,7 +239,8 @@ const Billing: NextPage = () => {
                     <div className="bg-zinc-50 px-4 py-3 text-right dark:bg-black sm:px-6">
                       <button
                         disabled
-                        type="submit"
+                        onClick={openCheckout}
+                        type="button"
                         className="inline-flex  justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2"
                       >
                         Save
