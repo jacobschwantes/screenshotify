@@ -265,16 +265,12 @@ const LoginCard: NextComponentType<NextPageContext, {}, LoginCardProps> = ({
     <div className="w-full max-w-lg space-y-4 rounded-2xl border-zinc-900 p-5 sm:border sm:p-10">
       <div className="pb-10">
         <Image
-          className="hidden h-8 w-auto dark:block"
+          className="h-8 w-auto "
           src={logo}
           alt="Company name"
         />
 
-        <Image
-          className="h-8 w-auto dark:hidden "
-          src={logo_light}
-          alt="Company name"
-        />
+      
       </div>
       {emailValidated ? (
         <PasswordPage

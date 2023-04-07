@@ -18,6 +18,7 @@ export default function LineChart({
   data,
   setData,
 }: LineChartProps) {
+
   const options: { options: ApexOptions; loadingOptions: ApexOptions } = {
     options: {
       theme: {
@@ -30,6 +31,7 @@ export default function LineChart({
           shadeIntensity: 0.65,
         },
       },
+
       chart: {
         background: "transparent",
         zoom: {
