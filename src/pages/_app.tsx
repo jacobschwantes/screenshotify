@@ -84,7 +84,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </ThemeProvider>
     );
   }
-  if (!error && preferences) {
+  if (!error) {
     return (
       <ThemeProvider theme={preferences?.preferences?.theme}>
         <AppLayout>
