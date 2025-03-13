@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "serve": "nodemon index.ts"
+    "serve": "nodemon index.ts",
+    "gcp-build": ""
   },
   "main": "index.js",
   "devDependencies": {
