@@ -1,5 +1,12 @@
-# screenshotify app
+# Screenshotify
 
-> web app for interfacing with screenshotify
+A web application and API for capturing screenshots of websites.
 
-Interface with api, manage account including api keys, billing, and logs.
+## Project Structure
+
+- `apps/` - Frontend applications
+  - `dashboard/` - Main application dashboard
+  - `marketing/` - Marketing website
+- `services/` - Backend services
+  - `api/` - API service
+  - `firebase-functions/` - Firebase cloud functions
